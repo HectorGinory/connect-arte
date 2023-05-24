@@ -1,0 +1,75 @@
+.navbar-container {
+    box-shadow: 0 0 .6rem var(--green),
+                inset -.1rem -.1rem .2rem rgba(0, 0, 0, 0.164),
+                inset .1rem .1rem .2rem rgba(255, 255, 255, 0.356);
+    background: linear-gradient(to top, var(--darkgreen), var(--green));
+    color: var(--white);
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.title {
+    width: 100%;
+    height: 10%;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.navigation-container {
+    width: 100%;
+    height: 80%;
+}
+
+.menu-container {
+    gap: 1.5rem;
+}
+
+.menu-container .btn-navigation {
+    padding: .5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: 0;
+    background: transparent;
+    color: white;
+    gap: 1rem;
+    border-radius: 2rem;
+    padding: 1rem;
+    transition: .2s;
+}
+.menu-container .btn-navigation:hover {
+    background: rgba(255, 255, 255, 0.466);
+    color: var(--darkgreen);
+}
+
+.menu-container .btn-navigation img {
+    width: 2rem;
+    height: 2rem;
+}
+.profile-navigation {
+    color: var(--darkgreen);
+    width: 90%;
+    height: 10%;
+    background-color: white;
+    border-radius: 10rem;
+    box-sizing: content-box;
+}
+
+@media (max-width: 1300px) {
+    .menu-container{
+        width: 100%;
+    }
+    .menu-container .btn-navigation {
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+    .menu-container .btn-navigation p {
+        display: none;
+    }
+    .profile-navigation .username-container {
+        display: none;
+    }
+    .profile-navigation .options-container {
+        display: none;
+    }
+}
