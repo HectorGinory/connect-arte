@@ -1,0 +1,17 @@
+.body {
+    height: 100%;
+    width: calc(100vw - 40rem);
+}
+
+@media (max-width: 1300px) {
+    .body{
+        width: calc(100vw - 27rem);
+    }
+}
+
+@media (max-width: 800px) {
+    .body{
+        height:  calc(100vh - 14rem);
+        width:100%;
+    }
+}

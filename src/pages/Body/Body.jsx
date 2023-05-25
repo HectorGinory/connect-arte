@@ -1,7 +1,7 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "../Home/Home";
-
+import './Body.css'
 const Body = () => {
   return (
     <div className="flex body">
