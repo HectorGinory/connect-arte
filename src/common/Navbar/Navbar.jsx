@@ -1,6 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { userData } from "../../pages/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, userData } from "../../pages/userSlice";
 import { firstToUpperCase } from "../../services/functions";
 import "./Navbar.css";
 import { BiHome, BiMessageAltCheck } from "react-icons/bi";
@@ -8,13 +8,13 @@ import { FiHash } from "react-icons/fi";
 import { BsBell } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { FaUsers } from "react-icons/fa";
-import { RiLoginCircleLine } from "react-icons/ri";
+import { RiLoginCircleLine, RiLogoutCircleLine} from "react-icons/ri";
 import profilePicture from "../../assets/profile_picture.jpg";
 import BtnNavbar from "../Btn-navbar/Btn-navbar";
 
 const Navbar = () => {
   const userRdxData = useSelector(userData);
-
+  const dispatch = useDispatch()
   return (
     <div className="flex align-c f-column side-nav navbar-container">
       <div className="flex align-c title">
@@ -28,7 +28,7 @@ const Navbar = () => {
           <div className="line"></div>
         </div>
         <div className="flex f-column menu-container">
-          {userRdxData.user.data ? (
+          {userRdxData.user.email ? (
             <>
               <BtnNavbar
                 ReactIcon={BiHome}
@@ -54,6 +54,11 @@ const Navbar = () => {
                 ReactIcon={CgProfile}
                 text={"Perfil"}
                 path={""}
+              ></BtnNavbar>
+              <BtnNavbar
+                ReactIcon={RiLogoutCircleLine}
+                text={"Logout"}
+				onClick={()=> dispatch(logout())}
               ></BtnNavbar>
             </>
           ) : (
@@ -81,9 +86,7 @@ const Navbar = () => {
         <div className="flex f-column justify-c username-container">
             <>
               <p>
-                {firstToUpperCase(userRdxData.user.name) +
-                  " " +
-                  firstToUpperCase(userRdxData.user.surnames[0])}
+                {firstToUpperCase(userRdxData.user.name)}
               </p>
               <p>{"@" + firstToUpperCase(userRdxData.user.username)}</p>
             </>

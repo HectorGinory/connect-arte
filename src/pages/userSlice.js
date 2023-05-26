@@ -15,7 +15,8 @@ export const userSlice = createSlice({
         },
         logout: (state, action) => {
             return {
-                // credentials:{}
+                user: {},
+                token: ""
             }
         }
     }

@@ -1,10 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const BtnNavbar = ({ ReactIcon, text, path }) => {
+const BtnNavbar = ({ ReactIcon, text, path, onClick }) => {
     const navigate = useNavigate()
   return (
-    <button className="flex align-c btn-navigation" onClick={()=>navigate(`/${path}`)}>
+    <button className="flex align-c btn-navigation" onClick={onClick ? onClick : ()=>{navigate(`/${path}`)}}>
       <div className="flex align-c justify-c icon-btn">
         <ReactIcon />
       </div>
