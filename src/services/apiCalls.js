@@ -22,6 +22,10 @@ export const logInUsers = async (credentials) => {
             "user": jwt_decode(res.data.token),
             "token": res.data.token
     }
-    console.log(data)
     return data
+}
+
+export const getUserById = async (userId) => {
+    const res = await axios.get(`${url}user/${userId}`)
+    return res.data
 }

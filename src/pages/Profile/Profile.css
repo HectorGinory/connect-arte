@@ -10,7 +10,7 @@
 .profile-info .profile-img {
     width: 100%;
     height: 15rem;
-    box-shadow: 0 0 .3rem var(--darkgreen);
+    box-shadow: 0 -3rem 4.5rem var(--darkgreen);
 }
 
 .profile-info .profile-img .banner-profile {
@@ -24,7 +24,6 @@
     translate: 5rem 10rem;
     border-radius: 50%;
     box-shadow: inset 0 0 1rem black;
-    box-shadow: 0 0 .6rem var(--darkgreen);
     height: 11rem;
     border: .2rem solid var(--white);
 }
