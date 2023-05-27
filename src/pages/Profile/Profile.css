@@ -1,0 +1,33 @@
+.profile-container {
+    width: 100%;
+    height: 100vh;
+}
+.profile-info {
+    width: 100%;
+    height: 40rem;
+}
+
+.profile-info .profile-img {
+    width: 100%;
+    height: 15rem;
+    box-shadow: 0 0 .3rem var(--darkgreen);
+}
+
+.profile-info .profile-img .banner-profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info .profile-img .profile-picture {
+    position: absolute;
+    translate: 5rem 10rem;
+    border-radius: 50%;
+    box-shadow: inset 0 0 1rem black;
+    box-shadow: 0 0 .6rem var(--darkgreen);
+    height: 11rem;
+    border: .2rem solid var(--white);
+}
+.profile-info .profile-text {
+    margin-top: 7rem;
+}

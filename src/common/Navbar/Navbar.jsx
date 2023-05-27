@@ -11,10 +11,12 @@ import { FaUsers } from "react-icons/fa";
 import { RiLoginCircleLine, RiLogoutCircleLine} from "react-icons/ri";
 import profilePicture from "../../assets/profile_picture.jpg";
 import BtnNavbar from "../Btn-navbar/Btn-navbar";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const userRdxData = useSelector(userData);
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   return (
     <div className="flex align-c f-column side-nav navbar-container">
       <div className="flex align-c title">
@@ -53,12 +55,15 @@ const Navbar = () => {
               <BtnNavbar
                 ReactIcon={CgProfile}
                 text={"Perfil"}
-                path={""}
+                path={"profile"}
               ></BtnNavbar>
               <BtnNavbar
                 ReactIcon={RiLogoutCircleLine}
                 text={"Logout"}
-				onClick={()=> dispatch(logout())}
+				onClick={()=> {
+          dispatch(logout())
+          navigate("/")
+        }}
               ></BtnNavbar>
             </>
           ) : (
@@ -78,7 +83,6 @@ const Navbar = () => {
         </div>
       </div>
 	  {userRdxData.user.name && (
-
       <div className="flex align-c justify-c profile-navigation">
         <div className="image-container">
           <img src={profilePicture} className="img" />
@@ -93,7 +97,6 @@ const Navbar = () => {
         </div>
       </div>
 	  )}
-
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../userSlice";
 import { logInUsers } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -28,8 +29,8 @@ const Login = () => {
     logInUsers(credentials)
       .then((res) => {
         dispatch(login(res));
-        console.log(res);
         navigate("/");
+        toast.success(`Bienvenid@ de vuelta ${res.user.name}`);
       })
       .catch((e) => {
         console.log("ERROR:", e);
@@ -37,15 +38,16 @@ const Login = () => {
   };
 
   useEffect(() => {
-    if (userRDX.credentials?.token) {
+    if (userRDX.user.name) {
       navigate("/");
     }
   }, []);
 
   return (
-    <div className="login-container flex-c-c container">
+    <div className="flex align-c justify-c login-body">
+          <div className="flex align-c justify-c login-container">
       <h2>Login</h2>
-      <div className="form flex-c-c">
+      <div className="form flex align-c justify-c">
         <label>
           Email
           <InputText
@@ -73,6 +75,7 @@ const Login = () => {
           <button onClick={() => navigate("/register")} className="btn">Register</button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

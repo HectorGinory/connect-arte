@@ -8,6 +8,12 @@
         width: calc(100vw - 27rem);
     }
 }
+@media (max-width: 900px) {
+    .body{
+        width:  calc(100vh - 7rem);
+        height:100%;
+    }
+}
 
 @media (max-width: 800px) {
     .body{

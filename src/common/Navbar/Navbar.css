@@ -32,7 +32,7 @@
     display: none;
 }
 
-.menu-container .btn-navigation {
+.btn-navigation {
     padding: .5rem;
     font-size: 1.5rem;
     font-weight: 600;
@@ -44,12 +44,12 @@
     padding: 1rem;
     transition: .2s;
 }
-.menu-container .btn-navigation:hover {
+.btn-navigation:hover {
     background: rgba(255, 255, 255, 0.466);
     color: var(--darkgreen);
 }
 
-.menu-container .btn-navigation img {
+.btn-navigation img {
     width: 2rem;
     height: 2rem;
 }

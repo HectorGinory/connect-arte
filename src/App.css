@@ -1,12 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-:root {
+/* :root {
   --lightgreen: #b9e6d5;
   --green: #7fd9be;
   --darkgreen: #53c9a2;
   --white: #EDEDED;
   --grey: #CCCCCC;
   --darkgrey: #757474;
+  --black: #111111;
+} */
+:root {
+  --lightgreen: #c797ff;
+  --green: #541bd8;
+  --darkgreen: #5800a0;
+  --white: #ffffff;
+  --grey: #a399ad;
+  --darkgrey: #554a5a;
+  --black: #111111;
 }
 /* font-family: 'Montserrat', sans-serif; */
 * {
@@ -19,6 +29,7 @@
   height: 100vh;
   display: flex;
   background: linear-gradient(to top, var(--grey), var(--white));
+  overflow: hidden;
 }
 .flex {
   display: flex;
@@ -48,3 +59,4 @@
     flex-direction: column;
   }
 }
+
