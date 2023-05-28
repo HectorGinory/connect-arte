@@ -1,10 +1,11 @@
 .footer {
   width: 20rem;
   height: 100%;
-  background: linear-gradient(to top, var(--darkgreen), var(--green));
-  box-shadow: 0 0 0.6rem var(--green),
+  background: linear-gradient(to top, var(--darkfirst), var(--first));
+  box-shadow: 0 0 0.3rem var(--first),
     inset -0.1rem -0.1rem 0.2rem rgba(0, 0, 0, 0.164),
     inset 0.1rem 0.1rem 0.2rem rgba(255, 255, 255, 0.356);
+    z-index: 999;
 }
 
 @media (max-width:900px) {
