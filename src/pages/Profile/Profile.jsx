@@ -50,7 +50,7 @@ const Profile = () => {
   
   return (
     <div className="flex justify-c profile-container">
-      {user ? (
+      {undefined ? (
         <div className="flex align-c f-column profile-info ">
           <div className="profile-img">
             <img

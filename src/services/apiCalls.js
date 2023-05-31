@@ -29,3 +29,8 @@ export const getUserById = async (userId) => {
     const res = await axios.get(`${url}user/${userId}`)
     return res.data
 }
+
+export const getContriesList = async() => {
+    const res = await axios.get('https://restcountries.com/v3.1/all?fields=name')
+    return res.data
+}
