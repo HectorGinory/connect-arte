@@ -27,6 +27,45 @@
     height: 11rem;
     border: .2rem solid var(--white);
 }
-.profile-info .profile-text {
-    margin-top: 7rem;
+.profile-container .profile-text {
+    width: 90%;
+}
+.profile-text .edit-profile {
+    height:6rem;
+}
+
+.profile-text .edit-profile .btn-navigation {
+    padding: 1rem;
+}
+
+.profile-text .user-info h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.profile-text .user-info h2 {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.profile-text .user-info p {
+    font-weight: 300;
+    margin: .5rem 0;
+}
+.profile-text  .btn-navigation {
+    color: var(--white);
+    background: var(--darkfirst);
+    border: .1rem solid var(--first);
+    font-size: 1.2rem;
+    padding: .3rem 1rem;
+}
+.common-contacts {
+    height: 3rem;
+}
+
+.ReactModal__Content--after-open {
+  background: linear-gradient(to top, var(--darkfirst), var(--first)) !important;
+  flex-direction: column !important;
+  display: flex;
+  height: 80%;
+  border-radius: 1rem !important; 
 }

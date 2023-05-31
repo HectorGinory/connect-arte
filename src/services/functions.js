@@ -42,3 +42,10 @@ export function credentialsVerify(object) {
   }
   return true; 
 }
+
+export const printDateProfile = (dateString) => {
+  const date = new Date(dateString)
+  const month = date.toLocaleDateString(undefined, {month: 'long'})
+  const year = date.toLocaleDateString(undefined, {year: 'numeric'})
+  return `Se unió en ${month} de ${year}`
+}

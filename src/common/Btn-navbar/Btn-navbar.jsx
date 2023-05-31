@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const BtnNavbar = ({ ReactIcon, text, path, onClick }) => {
+const ButtonIcon = ({ ReactIcon, text, path, onClick }) => {
     const navigate = useNavigate()
   return (
     <button className="flex align-c btn-navigation" onClick={onClick ? onClick : ()=>{navigate(`/${path}`)}}>
@@ -13,4 +13,4 @@ const BtnNavbar = ({ ReactIcon, text, path, onClick }) => {
   );
 };
 
-export default BtnNavbar;
+export default ButtonIcon;

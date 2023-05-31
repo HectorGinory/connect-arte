@@ -10,7 +10,7 @@ import { CgProfile } from "react-icons/cg";
 import { FaUsers } from "react-icons/fa";
 import { RiLoginCircleLine, RiLogoutCircleLine} from "react-icons/ri";
 import profilePicture from "../../assets/profile_picture.jpg";
-import BtnNavbar from "../Btn-navbar/Btn-navbar";
+import ButtonIcon from "../Btn-navbar/Btn-navbar";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
@@ -32,52 +32,52 @@ const Navbar = () => {
         <div className="flex f-column menu-container">
           {userRdxData.user.email ? (
             <>
-              <BtnNavbar
+              <ButtonIcon
                 ReactIcon={BiHome}
                 text={"Inicio"}
                 path={""}
-              ></BtnNavbar>
-              <BtnNavbar
+              ></ButtonIcon>
+              <ButtonIcon
                 ReactIcon={FiHash}
                 text={"Descubre"}
                 path={""}
-              ></BtnNavbar>
-              <BtnNavbar
+              ></ButtonIcon>
+              <ButtonIcon
                 ReactIcon={BsBell}
                 text={"Notificaciones"}
                 path={""}
-              ></BtnNavbar>
-              <BtnNavbar
+              ></ButtonIcon>
+              <ButtonIcon
                 ReactIcon={BiMessageAltCheck}
                 text={"Mensajes"}
                 path={""}
-              ></BtnNavbar>
-              <BtnNavbar
+              ></ButtonIcon>
+              <ButtonIcon
                 ReactIcon={CgProfile}
                 text={"Perfil"}
                 path={"profile"}
-              ></BtnNavbar>
-              <BtnNavbar
+              ></ButtonIcon>
+              <ButtonIcon
                 ReactIcon={RiLogoutCircleLine}
                 text={"Logout"}
 				onClick={()=> {
           dispatch(logout())
           navigate("/")
         }}
-              ></BtnNavbar>
+              ></ButtonIcon>
             </>
           ) : (
             <>
-			<BtnNavbar
+			<ButtonIcon
                 ReactIcon={FaUsers}
                 text={"Register"}
                 path={"register"}
-              ></BtnNavbar>
-              <BtnNavbar
+              ></ButtonIcon>
+              <ButtonIcon
                 ReactIcon={RiLoginCircleLine}
                 text={"Login"}
                 path={"login"}
-              ></BtnNavbar>
+              ></ButtonIcon>
 			</>
           )}
         </div>
