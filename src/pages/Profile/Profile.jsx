@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { firstToUpperCase, printDateProfile } from "../../services/functions";
 import "./Profile.css";
-import { getUserById } from "../../services/apiCalls";
+import { getUserByUserName } from "../../services/apiCalls";
 import { toast } from "sonner";
 import { FaPencilAlt, FaUserPlus } from "react-icons/fa";
 import ButtonIcon from "../../common/Btn-navbar/Btn-navbar";
@@ -25,18 +25,17 @@ const Profile = () => {
       navigate("/");
     }
     if (!params.username || params.username === userRdxData.user.username) {
-      getUserById(userRdxData.user.username)
+      getUserByUserName(userRdxData.user.username)
         .then(async (res) => {
           setOwnerProfile(true);
           await setUser(res.user);
-          console.log(user);
         })
         .catch((err) => {
           toast.error("Cant get your user info, try again.");
           navigate("/");
         });
     } else {
-      getUserById(params.username)
+      getUserByUserName(params.username)
         .then(async (res) => {
           setOwnerProfile(false);
           await setUser(res.user);
@@ -50,7 +49,7 @@ const Profile = () => {
   
   return (
     <div className="flex justify-c profile-container">
-      {undefined ? (
+      {user ? (
         <div className="flex align-c f-column profile-info ">
           <div className="profile-img">
             <img
