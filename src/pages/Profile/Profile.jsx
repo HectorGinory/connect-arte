@@ -10,6 +10,7 @@ import { getUserById } from "../../services/apiCalls";
 import { toast } from "sonner";
 import { FaPencilAlt, FaUserPlus } from "react-icons/fa";
 import ButtonIcon from "../../common/Btn-navbar/Btn-navbar";
+import Spinner from "../../common/Spinner/Spinner";
 
 const Profile = () => {
   const location = useLocation();
@@ -49,7 +50,7 @@ const Profile = () => {
   
   return (
     <div className="flex justify-c profile-container">
-      {!user ? (
+      {user ? (
         <div className="flex align-c f-column profile-info ">
           <div className="profile-img">
             <img
@@ -68,7 +69,7 @@ const Profile = () => {
               {ownerProfile && (
                 <ButtonIcon
                   ReactIcon={FaPencilAlt}
-                  onClick={() => openModal()}
+                  onClick={() => navigate('./editInfo')}
                   text={"Editar Perfil"}
                 ></ButtonIcon>
               )}
@@ -97,7 +98,9 @@ const Profile = () => {
           </div>
         </div>
       ) : (
-        <></>
+        <>
+          <Spinner/>
+        </>
       )}
     </div>
   );

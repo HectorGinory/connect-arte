@@ -6,6 +6,7 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import { Toaster } from "sonner";
+import EditProfileInfo from "../EditProfileInfo/EditProfileInfo";
 
 const Body = () => {
   return (
@@ -18,6 +19,7 @@ const Body = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/user/:id" element={<Profile />} />
+        <Route path="/profile/editInfo" element={<EditProfileInfo />} />
       </Routes>
     </div>
   )
