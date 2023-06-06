@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import profilePicture from "../../assets/profile_picture.jpg";
+import profilePicture from "../../assets/profile-picture.png";
 import profileBanner from "../../assets/banner-profile.png";
 import { userData } from "../userSlice";
 import { useSelector } from "react-redux";
@@ -39,6 +39,7 @@ const Profile = () => {
         .then(async (res) => {
           setOwnerProfile(false);
           await setUser(res.user);
+          console.lo
         })
         .catch((err) => {
           toast.error("Cant get your user info, try again.");

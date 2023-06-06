@@ -9,7 +9,7 @@ import { BsBell } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { FaUsers } from "react-icons/fa";
 import { RiLoginCircleLine, RiLogoutCircleLine} from "react-icons/ri";
-import profilePicture from "../../assets/profile_picture.jpg";
+import profilePicture from "../../assets/profile-picture.png";
 import ButtonIcon from "../Btn-navbar/Btn-navbar";
 import { useNavigate } from "react-router-dom";
 

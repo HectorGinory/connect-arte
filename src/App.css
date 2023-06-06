@@ -50,6 +50,9 @@
 .justify-e {
   justify-content: flex-end;
 }
+.justify-sb {
+  justify-content: space-between;
+}
 
 
 @media (max-width:800px) {
