@@ -25,8 +25,12 @@ export const logInUsers = async (credentials) => {
     return data
 }
 
-export const getUserByUserName = async (userName) => {
-    const res = await axios.get(`${url}user/${userName}`)
+export const getUserByUserName = async (username) => {
+    const res = await axios.get(`${url}user/${username}`)
+    return res.data
+}
+export const editInfoByUserName = async (username, credentials) => {
+    const res = await axios.put(`${url}user/${username}`, credentials)
     return res.data
 }
 

@@ -10,7 +10,6 @@ import {
   getUserByUserName,
 } from "../../services/apiCalls";
 
-import "./EditProfileInfo.css";
 import { InputText } from "../../common/InputText/InputText";
 
 import ReactCrop from "react-image-crop";
@@ -18,7 +17,7 @@ import "react-image-crop/dist/ReactCrop.css";
 import { toast } from "sonner";
 import { firstToUpperCase } from "../../services/functions";
 
-const EditProfileInfo = () => {
+const EditExperience = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userRdxData = useSelector(userData);
@@ -102,95 +101,6 @@ const EditProfileInfo = () => {
         />
         <p className="name-length">{credentials.name.length}/20</p>
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
-        <div className="flex f-column justify-c original-info">
-          <p>Actual email:</p>
-          <p>{user.email}</p>
-        </div>
-        <InputText
-          type={"text"}
-          className={"input"}
-          placeholder={"Insert new email"}
-          name={"email"}
-          handler={credentialsHandler}
-          required={true}
-          value={credentials.email}
-        />
-      </label>
-      <label className="flex align-c f-column justify-c justify-sb">
-        <div className="flex f-column justify-c original-info">
-          <p>Actual username:</p>
-          <p>{user.username}</p>
-        </div>
-        <InputText
-          type={"text"}
-          className={"input"}
-          placeholder={"Insert username"}
-          name={"username"}
-          handler={credentialsHandler}
-          required={true}
-          value={credentials.username}
-        />
-      </label>
-      <label className="flex align-c f-column justify-c justify-sb">
-        <div className="flex f-column justify-c original-info">
-          <p>Actual description:</p>
-          {user.description === "" ? <br /> : <p className="descrition">{user.description}</p>}
-        </div>
-        <div className="description-input">
-          <div className="input-container">
-            <textarea
-              type="text"
-              className="input"
-              placeholder="Insert new description"
-              name="description"
-              onChange={(e) => credentialsHandler(e)}
-              required
-              value={credentials.description}
-              style={{width: 100 + '%'}}
-            />
-          </div>
-          <p>{credentials.description.length}/150</p>
-        </div>
-      </label>
-      <label className="flex align-c f-column justify-c justify-sb">
-        <div className="flex f-column justify-c original-info">
-          <p>Actual location:</p>
-          {user.location === "" ? <br /> : <p>{user.location}</p>}
-        </div>
-        <div className="input-section">
-          <InputText
-            type={"text"}
-            className={"input"}
-            placeholder={"Insert location"}
-            name={"location"}
-            handler={locationCredentialHandler}
-            required={true}
-            value={firstToUpperCase(credentials.location)}
-          />
-          <div className="country-map">
-          {credentials.location === "" ? (
-            <br />
-          ) : (
-            countrieList.map((countrie, index) => {
-              return (
-                <p
-                  key={index}
-                  onClick={() => {
-                    setCredentials((prev) => ({
-                      ...prev,
-                      location: countrie,
-                    }));
-                  }}
-                >
-                  {firstToUpperCase(countrie)}
-                </p>
-              );
-            })
-          )}
-          </div>
-        </div>
-      </label>
       <div className="btn-container">
         <button onClick={() => submitInfo()} className="btn">
           Aceptar cambios
@@ -203,4 +113,4 @@ const EditProfileInfo = () => {
   );
 };
 
-export default EditProfileInfo;
+export default EditExperience;

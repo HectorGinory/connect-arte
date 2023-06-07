@@ -1,6 +1,7 @@
 .body {
     height: 100%;
     width: calc(100vw - 40rem);
+    overflow-y: auto;
 }
 
 @media (max-width: 1300px) {

@@ -9,13 +9,134 @@
 .edit-info-container h1 {
     color: var(--first);
 }
-
 .edit-info-container label {
-    width: 50%;
-    height: 5rem;
+    width: 70%;
+    height: auto;
+}
+.edit-info-container label .name-length{
+    width: 100%;
+    text-align: start;
+    margin-top: 0.5rem;
+}
+
+.edit-info-container label .original-info {
+    width: 100%;
+}
+.edit-info-container label .original-info p {
+    margin-top: .5rem;
+}
+
+.edit-info-container label .original-info p:first-child {
+    color: var(--first);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+.edit-info-container label .description-input {
+    width: 100%;
+    height: 7rem;
+}
+.edit-info-container label .input-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: .5rem;
+    justify-content: center;
+}
+
+.edit-info-container label .input-container .input {
+    height: 2rem;
+    width: 100%;
+    border-radius: .5rem;
+    outline: none;
+    text-align: center;
+    border: .1rem solid var(--first);
+    color: var(--darkfirst);
+}
+.edit-info-container label .input-container .input::placeholder {
+    color: var(--lightfirst);
 }
 
 
-.edit-info-container label .country-map {
-    height: 100%;
+.edit-info-container label .input-section {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0px;
+}
+.edit-info-container label .input-section .input {
+    width: 100%;
+}
+
+.edit-info-container label .input-section .country-map{
+    position: relative;
+    height: 8rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 95%;
+    border: 1px solid var(--first);
+    translate: 0 -1rem;
+    background: var(--white);
+    border-radius: 0 0 .4rem .4rem;
+}
+.country-map p {
+    color: var(--first);
+    font-size: 1rem;
+    font-weight: 300;
+    width: 100%;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--first);
+    border-top: 0 solid transparent;
+    box-sizing: border-box;
+}
+
+.country-map p:hover {
+    color: var(--white);
+    background: var(--darkfirst);
+    transition: .2s;
+}
+
+.edit-info-container label .input-section .input-container,
+.edit-info-container label .description-input .input-container {
+    width: 100%;
+    height: 4rem;
+}
+.edit-info-container .descrition{
+    text-align: justify;
+}
+.edit-info-container label .description-input .input-container {
+    height: 80%;
+}
+
+.edit-info-container label .description-input .input-container textarea {
+    height: 95%;
+    text-align: justify;
+    display: flex;
+    resize: none;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.edit-info-container .btn {
+    padding: .4rem;
+    background: linear-gradient(to top, var(--darkfirst), var(--lightfirst));
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: .1rem solid var(--lightfirst);
+    margin: 0.5rem;
+    border-radius: .3rem;
+    transition: .2s;
+    margin-bottom: 5rem;
+}
+
+.edit-info-container .btn:hover {
+    filter: brightness(1.1);
+    border-radius: .6rem;
 }

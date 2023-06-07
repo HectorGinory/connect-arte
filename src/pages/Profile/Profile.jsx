@@ -75,14 +75,14 @@ const Profile = () => {
               )}
             </div>
             <div className="user-info">
-              <h1>{firstToUpperCase(userRdxData.user.name)}</h1>
-              <h2>@{firstToUpperCase(userRdxData.user.username)}</h2>
+              <h1>{firstToUpperCase(user.name)}</h1>
+              <h2>@{firstToUpperCase(user.username)}</h2>
               <p>{user.location}</p>
               <p>{printDateProfile(user.dateOfCreation)}</p>
               <p>{"Tiene " + user.contacts.length + " contactos"}</p>
               <div className="common-contacts"></div>
               <div className="contact-section">
-                {ownerProfile && (
+                {!ownerProfile && (
                   <ButtonIcon
                     ReactIcon={FaUserPlus}
                     onClick={() => console.log()}
@@ -90,10 +90,10 @@ const Profile = () => {
                   ></ButtonIcon>
                 )}
               </div>
-              {/* <div className="about-container">
+              <div className="about-container">
               <h3>Acerca de</h3>
-              <p></p>
-            </div> */}
+              <p>{user.description}</p>
+            </div>
             </div>
           </div>
         </div>

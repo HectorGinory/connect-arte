@@ -49,3 +49,11 @@ export const printDateProfile = (dateString) => {
   const year = date.toLocaleDateString(undefined, {year: 'numeric'})
   return `Se unió en ${month} de ${year}`
 }
+
+export const checkAviable = async(username) => {
+  getUserByUserName(username).then(()=>{
+    return false
+  }).catch(()=>{
+    return false
+  })
+}
