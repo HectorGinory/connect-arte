@@ -4,9 +4,16 @@ import profileBanner from "../../assets/banner-profile.png";
 import { userData } from "../userSlice";
 import { useSelector } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { firstToUpperCase, printDateProfile } from "../../services/functions";
+import {
+  firstToUpperCase,
+  formatedDate,
+  printDateProfile,
+} from "../../services/functions";
 import "./Profile.css";
-import { getUserByUserName } from "../../services/apiCalls";
+import {
+  editEducationByUserName,
+  getUserByUserName,
+} from "../../services/apiCalls";
 import { toast } from "sonner";
 import { FaPencilAlt, FaUserPlus } from "react-icons/fa";
 import ButtonIcon from "../../common/Btn-navbar/Btn-navbar";
@@ -39,7 +46,7 @@ const Profile = () => {
         .then(async (res) => {
           setOwnerProfile(false);
           await setUser(res.user);
-          console.lo
+          console.lo;
         })
         .catch((err) => {
           toast.error("Cant get your user info, try again.");
@@ -47,7 +54,7 @@ const Profile = () => {
         });
     }
   }, []);
-  
+
   return (
     <div className="flex justify-c profile-container">
       {user ? (
@@ -69,7 +76,7 @@ const Profile = () => {
               {ownerProfile && (
                 <ButtonIcon
                   ReactIcon={FaPencilAlt}
-                  onClick={() => navigate('./editInfo')}
+                  onClick={() => navigate("./editInfo")}
                   text={"Editar Perfil"}
                 ></ButtonIcon>
               )}
@@ -91,15 +98,85 @@ const Profile = () => {
                 )}
               </div>
               <div className="about-container">
-              <h3>Acerca de</h3>
-              <p>{user.description}</p>
-            </div>
+                <h3>Acerca de</h3>
+                <p>{user.description}</p>
+              </div>
+              <div className="education-section">
+                <div className="education-title">
+                  <h3>Educación</h3>
+                  {ownerProfile && (
+                    <ButtonIcon
+                      ReactIcon={FaPencilAlt}
+                      onClick={() => navigate("./EditEducation")}
+                      text={"Editar educación"}
+                    ></ButtonIcon>
+                  )}
+                </div>
+                <div className="education-container">
+                  {user.education.map((education, index) => {
+                    return (
+                      <div className="education" key={index}>
+                        <div className="principal-info">
+                          <div>
+                            <p>
+                              {education.title} - {education.school}
+                            </p>
+                            <p>{education.discipline}</p>
+                          </div>
+                          <div>
+                            <p>Desde: {formatedDate(education.date_start)}</p>
+                            <p>Hasta: {formatedDate(education.date_end)}</p>
+                          </div>
+                        </div>
+                        <div className="description">
+                          <p>{education.description}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className="experience-section">
+                <div className="experience-title">
+                  <h3>Experiencia</h3>
+                  {ownerProfile && (
+                    <ButtonIcon
+                      ReactIcon={FaPencilAlt}
+                      onClick={() => navigate("./EditExperience")}
+                      text={"Editar experiencia"}
+                    ></ButtonIcon>
+                  )}
+                </div>
+                <div className="experience-container">
+                  {user.experience.map((experience, index) => {
+                    return (
+                      <div className="experience" key={index}>
+                        <div className="principal-info">
+                          <div>
+                            <p>
+                              {experience.position} - {experience.company}
+                            </p>
+                            <p>{experience.location}</p>
+                          </div>
+                          <div>
+                            <p>Desde: {formatedDate(experience.date_start)}</p>
+                            <p>Hasta: {formatedDate(experience.date_end)}</p>
+                          </div>
+                        </div>
+                        <div className="description">
+                          <p>{experience.description}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       ) : (
         <>
-          <Spinner/>
+          <Spinner />
         </>
       )}
     </div>

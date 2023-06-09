@@ -30,7 +30,16 @@ export const getUserByUserName = async (username) => {
     return res.data
 }
 export const editInfoByUserName = async (username, credentials) => {
-    const res = await axios.put(`${url}user/${username}`, credentials)
+    const res = await axios.put(`${url}user/info/${username}`, credentials)
+    return res.data
+}
+export const editEducationByUserName = async (username, credentials) => {
+    const res = await axios.put(`${url}user/education/${username}`, credentials)
+    return res.data
+}
+
+export const editExperienceByUserName = async (username, credentials) => {
+    const res = await axios.put(`${url}user/experience/${username}`, credentials)
     return res.data
 }
 

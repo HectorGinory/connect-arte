@@ -2,10 +2,10 @@ import { toast } from "sonner";
 
 export const firstToUpperCase = (text, allSpaces = true) => {
   if (typeof text === "string") {
-    if(!allSpaces) {
+    if (!allSpaces) {
       return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
     }
-    text = text.split(" ")
+    text = text.split(" ");
   }
   const newText = text
     .map((text) => {
@@ -26,34 +26,49 @@ export const convertToBackendFormat = (text) => {
 
 export function credentialsVerify(object) {
   const { email, password, name, username } = object;
-  if(email === "" || password === "" || name === "" || username === "") {
-    toast.error('Debes rellenar todos los campos')
-    return false; 
+  if (email === "" || password === "" || name === "" || username === "") {
+    toast.error("Debes rellenar todos los campos");
+    return false;
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    toast.error('Introduzca un email válido')
-    return false; 
+    toast.error("Introduzca un email válido");
+    return false;
   }
   const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
   if (!passwordRegex.test(password)) {
-    toast.error('La contraseña debe tener una mayúcula, 6 caracteres y un número')
-    return false
+    toast.error(
+      "La contraseña debe tener una mayúcula, 6 caracteres y un número"
+    );
+    return false;
   }
-  return true; 
+  return true;
 }
 
 export const printDateProfile = (dateString) => {
-  const date = new Date(dateString)
-  const month = date.toLocaleDateString(undefined, {month: 'long'})
-  const year = date.toLocaleDateString(undefined, {year: 'numeric'})
-  return `Se unió en ${month} de ${year}`
-}
+  const date = new Date(dateString);
+  const month = date.toLocaleDateString(undefined, { month: "long" });
+  const year = date.toLocaleDateString(undefined, { year: "numeric" });
+  return `Se unió en ${month} de ${year}`;
+};
 
-export const checkAviable = async(username) => {
-  getUserByUserName(username).then(()=>{
-    return false
-  }).catch(()=>{
-    return false
-  })
-}
+export const checkAviable = async (username) => {
+  getUserByUserName(username)
+    .then(() => {
+      return false;
+    })
+    .catch(() => {
+      return false;
+    });
+};
+
+export const formatedDate = (stringDate) => {
+  const date = new Date(stringDate);
+  const formattedDate = date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
+  return `${formattedDate}`;
+};

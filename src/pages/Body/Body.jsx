@@ -7,6 +7,7 @@ import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import { Toaster } from "sonner";
 import EditProfileInfo from "../EditProfileInfo/EditProfileInfo";
+import EditEducation from "../EditEducation/EditEducation";
 import EditExperience from "../EditExperience/EditExperience";
 
 const Body = () => {
@@ -21,7 +22,8 @@ const Body = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/user/:id" element={<Profile />} />
         <Route path="/profile/editInfo" element={<EditProfileInfo />} />
-        <Route path="/profile/editExperience" element={<EditExperience />} />
+        <Route path="/profile/EditEducation" element={<EditEducation />} />
+        <Route path="/profile/EditExperience" element={<EditExperience />} />
       </Routes>
     </div>
   )

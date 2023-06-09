@@ -6,13 +6,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import {
   editEducationByUserName,
-  editExperienceByUserName,
-  getContriesList,
   getUserByUserName,
 } from "../../services/apiCalls";
 
 import { InputText } from "../../common/InputText/InputText";
-
+import './EditEducation.css'
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { toast } from "sonner";
@@ -24,13 +22,14 @@ const EditEducation = () => {
 
   const [user, setUser] = useState({});
   const [credentials, setCredentials] = useState({
-    position: "",
-    company: "",
-    location: "",
+    school: "",
+    title: "",
+    discipline: "",
     date_start: "",
     date_end: "",
     description: ""
   });
+
   useEffect(() => {
     getUserByUserName(userRdxData.user.username)
       .then(async (res) => {
@@ -51,7 +50,7 @@ const EditEducation = () => {
 
 
   const submitInfo = async () => {
-    editExperienceByUserName(userRdxData.user.username, credentials)
+    editEducationByUserName(userRdxData.user.username, credentials)
       .then((res) => {
         navigate("/profile");
       })
@@ -64,44 +63,44 @@ const EditEducation = () => {
       <h1>Añade tu experiencia</h1>
       <label className="flex align-c f-column justify-c justify-sb">
         <div className="flex f-column justify-c original-info">
-          <p>Cargo:</p>
+          <p>Escuela:</p>
         </div>
         <InputText
           type={"text"}
           className={"input"}
-          placeholder={"Ej.: Actor principal"}
-          name={"position"}
+          placeholder={"Ej.: Escuela de baile..."}
+          name={"school"}
           handler={credentialsHandler}
           required={true}
-          value={credentials.position}
+          value={credentials.school}
         />
       </label>
       <label className="flex align-c f-column justify-c justify-sb">
         <div className="flex f-column justify-c original-info">
-          <p>Empresa:</p>
+          <p>Título:</p>
         </div>
         <InputText
           type={"text"}
           className={"input"}
-          placeholder={"Ej.: Netflix"}
-          name={"company"}
+          placeholder={"Ej.: Interpretación ante la cámara"}
+          name={"title"}
           handler={credentialsHandler}
           required={true}
-          value={credentials.company}
+          value={credentials.title}
         />
       </label>
       <label className="flex align-c f-column justify-c justify-sb">
         <div className="flex f-column justify-c original-info">
-          <p>Ubicación:</p>
+          <p>Disciplina:</p>
         </div>
         <InputText
           type={"text"}
           className={"input"}
-          placeholder={"Ej.: Madrid, España"}
-          name={"location"}
+          placeholder={"Ej.: Bellas artes"}
+          name={"discipline"}
           handler={credentialsHandler}
           required={true}
-          value={credentials.location}
+          value={credentials.discipline}
         />
       </label>
       <label className="flex align-c f-column justify-c justify-sb">
@@ -118,7 +117,7 @@ const EditEducation = () => {
       </label>
       <label className="flex align-c f-column justify-c justify-sb">
         <div className="flex f-column justify-c original-info">
-          <p>Descripcion del cargo:</p>
+          <p>Descripcion de la educación:</p>
         </div>
         <textarea
               type="text"
