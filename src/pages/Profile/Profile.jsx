@@ -101,6 +101,8 @@ const Profile = () => {
                 <h3>Acerca de</h3>
                 <p>{user.description}</p>
               </div>
+              {user.rol === "user" ? 
+              <>
               <div className="flex justify-c f-column info-section">
                 <div className="flex align-c justify-sb info-title">
                   <h3>Educación</h3>
@@ -171,6 +173,10 @@ const Profile = () => {
                   })}
                 </div>
               </div>
+              </> :
+              <>
+                
+              </>}
             </div>
           </div>
         </div>

@@ -24,6 +24,7 @@ const EditProfileInfo = () => {
   const userRdxData = useSelector(userData);
 
   const [user, setUser] = useState({});
+  const [userRol, setUserRol] = useState("");
   const [countries, setCountries] = useState([]);
   const [countrieList, setCountrieList] = useState([]);
   const [credentials, setCredentials] = useState({
@@ -32,6 +33,7 @@ const EditProfileInfo = () => {
     username: "",
     description: "",
     location: "",
+    rol: "",
   });
 
   useEffect(() => {
@@ -42,12 +44,20 @@ const EditProfileInfo = () => {
     getUserByUserName(userRdxData.user.username)
       .then(async (res) => {
         await setUser(res.user);
+        await setUserRol(res.user.rol);
       })
       .catch((err) => {
         toast.error("Cant get your user info, try again.");
         navigate("/");
       });
   }, []);
+
+  useEffect(()=> {
+    setCredentials((prev) => ({
+      ...prev,
+      rol: userRol,
+    }));
+  }, [userRol])
 
   const credentialsHandler = async (e) => {
     await setCredentials((prevState) => ({
@@ -64,15 +74,16 @@ const EditProfileInfo = () => {
     const regExp = new RegExp(e.target.value.toLowerCase());
     const newList = countries.filter((countrie) => countrie.match(regExp));
     await setCountrieList(newList);
-    console.log(countrieList);
   };
 
   const submitInfo = async () => {
-    if(credentials.description.length > 150) {
-      return toast.error('La descripcion debe tener un máximo de 150 caracteres')
+    if (credentials.description.length > 150) {
+      return toast.error(
+        "La descripcion debe tener un máximo de 150 caracteres"
+      );
     }
-    if(credentials.name.length > 20) {
-      return toast.error('El nombre debe tener un máximo de 20 caracteres')
+    if (credentials.name.length > 20) {
+      return toast.error("El nombre debe tener un máximo de 20 caracteres");
     }
     editInfoByUserName(userRdxData.user.username, credentials)
       .then((res) => {
@@ -83,6 +94,15 @@ const EditProfileInfo = () => {
         toast.error("Ups, something go wrong");
       });
   };
+
+  const changerol = async () => {
+    if (userRol === "user") {
+      await setUserRol("company");
+    } else {
+      await setUserRol("user");
+    }
+  };
+
   return (
     <div className="flex align-c f-column edit-info-container">
       <h1>Change your profile info</h1>
@@ -135,7 +155,11 @@ const EditProfileInfo = () => {
       <label className="flex align-c f-column justify-c justify-sb">
         <div className="flex f-column justify-c original-info">
           <p>Actual description:</p>
-          {user.description === "" ? <br /> : <p className="descrition">{user.description}</p>}
+          {user.description === "" ? (
+            <br />
+          ) : (
+            <p className="descrition">{user.description}</p>
+          )}
         </div>
         <div className="description-input">
           <div className="input-container">
@@ -147,7 +171,7 @@ const EditProfileInfo = () => {
               onChange={(e) => credentialsHandler(e)}
               required
               value={credentials.description}
-              style={{width: 100 + '%'}}
+              style={{ width: 100 + "%" }}
             />
           </div>
           <p>{credentials.description.length}/150</p>
@@ -169,28 +193,40 @@ const EditProfileInfo = () => {
             value={firstToUpperCase(credentials.location)}
           />
           <div className="country-map">
-          {credentials.location === "" ? (
-            <br />
-          ) : (
-            countrieList.map((countrie, index) => {
-              return (
-                <p
-                  key={index}
-                  onClick={() => {
-                    setCredentials((prev) => ({
-                      ...prev,
-                      location: countrie,
-                    }));
-                  }}
-                >
-                  {firstToUpperCase(countrie)}
-                </p>
-              );
-            })
-          )}
+            {credentials.location === "" ? (
+              <br />
+            ) : (
+              countrieList.map((countrie, index) => {
+                return (
+                  <p
+                    key={index}
+                    onClick={() => {
+                      setCredentials((prev) => ({
+                        ...prev,
+                        location: countrie,
+                      }));
+                    }}
+                  >
+                    {firstToUpperCase(countrie)}
+                  </p>
+                );
+              })
+            )}
           </div>
         </div>
       </label>
+      <div className="change-rol-ontainer">
+        <button onClick={() => changerol()} className="changerol-button">
+          <div className="flex align-c justify-c icon-btn">
+            {/* <ReactIcon /> */}
+          </div>
+          <p>
+            {userRol === "user"
+              ? "Tu rol actual es usuario"
+              : "Tu rol actual es empresa"}
+          </p>
+        </button>
+      </div>
       <div className="btn-container">
         <button onClick={() => submitInfo()} className="btn">
           Aceptar cambios
