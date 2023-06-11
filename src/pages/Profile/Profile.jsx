@@ -61,14 +61,14 @@ const Profile = () => {
         <div className="flex align-c f-column profile-info ">
           <div className="profile-img">
             <img
-              src={profilePicture}
-              alt="profile-picture"
-              className="profile-picture"
-            />
-            <img
               src={profileBanner}
               alt="banner-profile"
               className="banner-profile"
+            />
+            <img
+              src={profilePicture}
+              alt="profile-picture"
+              className="profile-picture"
             />
           </div>
           <div className="profile-text">
@@ -101,8 +101,8 @@ const Profile = () => {
                 <h3>Acerca de</h3>
                 <p>{user.description}</p>
               </div>
-              <div className="education-section">
-                <div className="education-title">
+              <div className="flex justify-c f-column info-section">
+                <div className="flex align-c justify-sb info-title">
                   <h3>Educación</h3>
                   {ownerProfile && (
                     <ButtonIcon
@@ -112,11 +112,11 @@ const Profile = () => {
                     ></ButtonIcon>
                   )}
                 </div>
-                <div className="education-container">
+                <div className="data-container">
                   {user.education.map((education, index) => {
                     return (
-                      <div className="education" key={index}>
-                        <div className="principal-info">
+                      <div className="flex f-column data" key={index}>
+                        <div className="flex f-column principal-info">
                           <div>
                             <p>
                               {education.title} - {education.school}
@@ -136,8 +136,8 @@ const Profile = () => {
                   })}
                 </div>
               </div>
-              <div className="experience-section">
-                <div className="experience-title">
+              <div className="flex justify-c f-column info-section">
+                <div className="flex align-c justify-sb info-title">
                   <h3>Experiencia</h3>
                   {ownerProfile && (
                     <ButtonIcon
@@ -147,11 +147,11 @@ const Profile = () => {
                     ></ButtonIcon>
                   )}
                 </div>
-                <div className="experience-container">
+                <div className="data-container">
                   {user.experience.map((experience, index) => {
                     return (
-                      <div className="experience" key={index}>
-                        <div className="principal-info">
+                      <div className="flex f-column data" key={index}>
+                        <div className="flex f-column principal-info">
                           <div>
                             <p>
                               {experience.position} - {experience.company}

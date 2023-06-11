@@ -59,7 +59,7 @@ const EditEducation = () => {
       });
   };
   return (
-    <div className="flex align-c f-column edit-container">
+    <div className="flex align-c justify-c f-column edit-container">
       <h1>Añade tu experiencia</h1>
       <label className="flex align-c f-column justify-c justify-sb">
         <div className="flex f-column justify-c original-info">
@@ -103,25 +103,27 @@ const EditEducation = () => {
           value={credentials.discipline}
         />
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <div className="flex align-c justify-sb date-label-container">
+      <label className="flex f-column justify-c date-label">
         <div className="flex f-column justify-c original-info">
           <p>Fecha de incio:</p>
         </div>
         <input type="date" name="date_start" onChange={(e)=>credentialsHandler(e)}/>
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex f-column justify-c date-label">
         <div className="flex f-column justify-c original-info">
           <p>Fecha de fin:</p>
         </div>
         <input type="date" name="date_end" onChange={(e)=>credentialsHandler(e)}/>
       </label>
+      </div>
       <label className="flex align-c f-column justify-c justify-sb">
         <div className="flex f-column justify-c original-info">
           <p>Descripcion de la educación:</p>
         </div>
         <textarea
               type="text"
-              className="input"
+              className="input-textarea"
               placeholder="E.: Baile contemporáneo, ..."
               name="description"
               onChange={(e) => credentialsHandler(e)}

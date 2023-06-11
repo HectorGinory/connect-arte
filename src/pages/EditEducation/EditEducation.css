@@ -1,0 +1,88 @@
+.edit-container {
+    width: 100%;
+    height: 100%;
+}
+
+.edit-container h1 {
+    color: var(--first);
+    letter-spacing: .2rem;
+    text-align: center;
+}
+
+.edit-container label {
+    margin: .5rem 0;
+    width: 90%;
+}
+
+.edit-container label div {
+    width: 100%;
+}
+
+.edit-container label div p {
+    color: var(--first);
+    font-weight: 500;
+}
+
+.edit-container label div .input {
+        height: 2.5rem;
+    width: 100%;
+    border-radius: .5rem;
+    outline: none;
+    text-align: center;
+    border: .1rem solid var(--first);
+    color: var(--darkfirst);
+}
+
+.edit-container label div .input::placeholder {
+    color: var(--lightfirst);
+}
+.edit-container .date-label-container {
+    width: 90%;
+}
+
+.edit-container .date-label-container input {
+    width: 8rem;
+}
+.edit-container .input-textarea {
+    resize: none;
+    height: 10rem;
+}
+.edit-container .btn {
+    padding: .4rem;
+    background: linear-gradient(to top, var(--first), var(--lightfirst));
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: .1rem solid var(--lightfirst);
+    margin: 0.5rem;
+    border-radius: .3rem;
+    transition: .2s;
+}
+.edit-container .btn:hover {
+    filter: brightness(1.1);
+    border-radius: .6rem;
+}
+
+@media (max-width: 480px) {
+    .edit-container {
+        margin-top: 1rem;
+        justify-content: flex-start;
+    }
+
+    .edit-container h1 {
+        font-size: 1.4rem;
+    }
+    .edit-container .date-label-container {
+        flex-direction: column;
+        width: 100%;
+    }
+    .edit-container .date-label-container input {
+        width: 100%;
+    }
+}
+@media (max-height: 770px) {
+    .edit-container {
+        margin-top: 1rem;
+        justify-content: flex-start;
+    }
+}
