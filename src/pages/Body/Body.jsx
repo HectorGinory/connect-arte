@@ -9,6 +9,7 @@ import { Toaster } from "sonner";
 import EditProfileInfo from "../EditProfileInfo/EditProfileInfo";
 import EditEducation from "../EditEducation/EditEducation";
 import EditExperience from "../EditExperience/EditExperience";
+import JobSearch from "../JobSearch/JobSearch";
 
 const Body = () => {
   return (
@@ -19,6 +20,7 @@ const Body = () => {
         <Route path="/" element={<Home/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login />} />
+        <Route path="/jobsearch" element={<JobSearch />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/user/:id" element={<Profile />} />
         <Route path="/profile/editInfo" element={<EditProfileInfo />} />

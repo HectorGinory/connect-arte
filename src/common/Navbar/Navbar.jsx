@@ -8,6 +8,7 @@ import { FiHash } from "react-icons/fi";
 import { BsBell } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { FaUsers } from "react-icons/fa";
+import { MdWork } from "react-icons/md";
 import { RiLoginCircleLine, RiLogoutCircleLine} from "react-icons/ri";
 import profilePicture from "../../assets/profile-picture.png";
 import ButtonIcon from "../Btn-navbar/Btn-navbar";
@@ -37,21 +38,21 @@ const Navbar = () => {
                 text={"Inicio"}
                 path={""}
               ></ButtonIcon>
-              <ButtonIcon
+              {/* <ButtonIcon
                 ReactIcon={FiHash}
                 text={"Descubre"}
                 path={""}
-              ></ButtonIcon>
+              ></ButtonIcon> */}
               <ButtonIcon
-                ReactIcon={BsBell}
-                text={"Notificaciones"}
-                path={""}
+                ReactIcon={MdWork}
+                text={"Ofertas"}
+                path={"jobsearch"}
               ></ButtonIcon>
-              <ButtonIcon
+              {/* <ButtonIcon
                 ReactIcon={BiMessageAltCheck}
                 text={"Mensajes"}
                 path={""}
-              ></ButtonIcon>
+              ></ButtonIcon> */}
               <ButtonIcon
                 ReactIcon={CgProfile}
                 text={"Perfil"}
