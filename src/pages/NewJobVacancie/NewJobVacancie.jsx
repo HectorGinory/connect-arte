@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { InputText } from '../../common/InputText/InputText';
 import { userData } from '../userSlice';
-import { FaPencilAlt } from "react-icons/fa";
 
 const NewJobVacancie = () => {
   const navigate = useNavigate();
@@ -29,13 +28,7 @@ const NewJobVacancie = () => {
 
 
   const submitInfo = async () => {
-    editEducationByUserName(userRdxData.user.username, credentials)
-      .then((res) => {
-        navigate("/profile");
-      })
-      .catch(() => {
-        toast.error("Ups, something go wrong");
-      });
+
   };
 
   return (
