@@ -174,9 +174,23 @@ const Profile = () => {
                 </div>
               </div>
               </> :
-              <>
-                
-              </>}
+              <div className="flex justify-c f-column info-section">
+                <div className="flex align-c justify-sb info-title">
+                  <h3>Ofertas de empleo activas</h3>
+                  {ownerProfile && (
+                    <ButtonIcon
+                      ReactIcon={FaPencilAlt}
+                      onClick={() => navigate("./EditExperience")}
+                      text={"Añadir oferta"}
+                    ></ButtonIcon>
+                  )}
+                </div>
+                <div className="data-container">
+                  {user.jobVacancies.map((vacancie, index) => {
+
+                  })}
+                </div>
+              </div>}
             </div>
           </div>
         </div>
