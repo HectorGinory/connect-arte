@@ -180,7 +180,7 @@ const Profile = () => {
                   {ownerProfile && (
                     <ButtonIcon
                       ReactIcon={FaPencilAlt}
-                      onClick={() => navigate("./EditExperience")}
+                      onClick={() => navigate("/newvacancie")}
                       text={"Añadir oferta"}
                     ></ButtonIcon>
                   )}

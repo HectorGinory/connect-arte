@@ -20,7 +20,6 @@ const EditEducation = () => {
   const navigate = useNavigate();
   const userRdxData = useSelector(userData);
 
-  const [user, setUser] = useState({});
   const [credentials, setCredentials] = useState({
     school: "",
     title: "",
@@ -29,17 +28,6 @@ const EditEducation = () => {
     date_end: "",
     description: ""
   });
-
-  useEffect(() => {
-    getUserByUserName(userRdxData.user.username)
-      .then(async (res) => {
-        await setUser(res.user);
-      })
-      .catch((err) => {
-        toast.error("Cant get your user info, try again.");
-        navigate("/");
-      });
-  }, []);
 
   const credentialsHandler = async (e) => {
     await setCredentials((prevState) => ({
@@ -58,6 +46,7 @@ const EditEducation = () => {
         toast.error("Ups, something go wrong");
       });
   };
+
   return (
     <div className="flex align-c justify-c f-column edit-container">
       <h1>Añade tu experiencia</h1>
