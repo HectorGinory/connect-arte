@@ -12,6 +12,7 @@ import EditExperience from "../EditExperience/EditExperience";
 import JobSearch from "../JobSearch/JobSearch";
 import NewJobVacancie from "../NewJobVacancie/NewJobVacancie";
 import ApplyVacancie from "../ApplyVacancie/ApplyVacancie";
+import VacancieDetail from "../VacancieDetail/VacancieDetail";
 
 const Body = () => {
   return (
@@ -27,6 +28,7 @@ const Body = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/user/:id" element={<Profile />} />
         <Route path="/applyVacancie/:id" element={<ApplyVacancie />} />
+        <Route path="/vacancieDetail/:id" element={<VacancieDetail />} />
         <Route path="/profile/editInfo" element={<EditProfileInfo />} />
         <Route path="/profile/editeducation" element={<EditEducation />} />
         <Route path="/profile/editexperience" element={<EditExperience />} />

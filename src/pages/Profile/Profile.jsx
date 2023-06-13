@@ -12,6 +12,7 @@ import {
 import "./Profile.css";
 import {
   editEducationByUserName,
+  getJobVacanciesByUserId,
   getUserByUserName,
 } from "../../services/apiCalls";
 import { toast } from "sonner";
@@ -23,6 +24,7 @@ const Profile = () => {
   const location = useLocation();
   const params = useParams();
   const [ownerProfile, setOwnerProfile] = useState(false);
+  const [jobVacancies , setJobVacancies] = useState([])
   const userRdxData = useSelector(userData);
   const navigate = useNavigate();
   const [user, setUser] = useState();
@@ -31,28 +33,28 @@ const Profile = () => {
     if (!userRdxData.user.name) {
       navigate("/");
     }
+    let username;
     if (!params.username || params.username === userRdxData.user.username) {
-      getUserByUserName(userRdxData.user.username)
-        .then(async (res) => {
-          setOwnerProfile(true);
-          await setUser(res.user);
-          console.log(userRdxData)
-        })
-        .catch((err) => {
-          toast.error("Cant get your user info, try again.");
-          navigate("/");
-        });
+      setOwnerProfile(true);
+      username = userRdxData.user.username
     } else {
-      getUserByUserName(params.username)
-        .then(async (res) => {
-          setOwnerProfile(false);
-          await setUser(res.user);
-        })
-        .catch((err) => {
-          toast.error("Cant get your user info, try again.");
-          navigate("/");
-        });
+      setOwnerProfile(false);
+      username = params.username
     }
+    getUserByUserName(username)
+    .then(async (res) => {
+      await setUser(res.user);
+      console.log(res.user.description)
+      if(res.user.rol === "company") {
+        getJobVacanciesByUserId(res.user._id).then((res)=> {
+          setJobVacancies(res.data)
+        })
+      }
+    })
+    .catch((err) => {
+      toast.error("Cant get your user info, try again.");
+      navigate("/");
+    });
   }, []);
 
   return (
@@ -84,7 +86,7 @@ const Profile = () => {
             <div className="user-info">
               <h1>{firstToUpperCase(user.name)}</h1>
               <h2>@{firstToUpperCase(user.username)}</h2>
-              <p>{user.location}</p>
+              <p>{firstToUpperCase(user.location)}</p>
               <p>{printDateProfile(user.dateOfCreation)}</p>
               <p>{"Tiene " + user.contacts.length + " contactos"}</p>
               <div className="common-contacts"></div>
@@ -185,11 +187,22 @@ const Profile = () => {
                     ></ButtonIcon>
                   )}
                 </div>
-                <div className="data-container">
-                  {user.jobVacancies.map((vacancie, index) => {
-
+                {
+                  jobVacancies ?
+                  <div className="data-container">
+                  {jobVacancies.map((vacancie, index) => {
+                    return (
+                      <div key={index} onClick={()=>navigate(`/vacancieDetail/${vacancie._id}`)}>
+                        <p>{vacancie.charge_name}</p>
+                        <p>{vacancie.user_postulated.length} usuarios presentados</p>
+                      </div>
+                    )
                   })}
-                </div>
+                </div>:
+                <>
+                  <Spinner/>
+                </>
+                }
               </div>}
             </div>
           </div>

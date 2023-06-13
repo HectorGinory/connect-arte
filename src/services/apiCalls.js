@@ -64,6 +64,11 @@ export const applyVacancie = async(id, credentials) => {
     return res
 }
 
+export const getJobVacanciesByUserId = async(userId) => {
+    const res = await axios.get(`${url}vacancies/user/${userId}`)
+    return res
+}
+
 export const getContriesList = async() => {
     const res = await axios.get('https://restcountries.com/v3.1/all?fields=name')
     return res.data
