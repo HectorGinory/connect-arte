@@ -27,14 +27,11 @@ const NewJobVacancie = () => {
     }));
   };
 
-
   const submitInfo = async () => {
     setCredentials((prevState) => ({
       ...prevState,
       created_by: userRdxData.user._id,
     }));
-    console.log(credentials)
-    console.log(userRdxData)
     createVacancie(credentials).then((res) => {
       console.log(res)
     }).catch((e) => {

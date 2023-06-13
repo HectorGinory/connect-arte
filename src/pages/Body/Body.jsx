@@ -11,6 +11,7 @@ import EditEducation from "../EditEducation/EditEducation";
 import EditExperience from "../EditExperience/EditExperience";
 import JobSearch from "../JobSearch/JobSearch";
 import NewJobVacancie from "../NewJobVacancie/NewJobVacancie";
+import ApplyVacancie from "../ApplyVacancie/ApplyVacancie";
 
 const Body = () => {
   return (
@@ -25,6 +26,7 @@ const Body = () => {
         <Route path="/newvacancie" element={<NewJobVacancie />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/user/:id" element={<Profile />} />
+        <Route path="/applyVacancie/:id" element={<ApplyVacancie />} />
         <Route path="/profile/editInfo" element={<EditProfileInfo />} />
         <Route path="/profile/editeducation" element={<EditEducation />} />
         <Route path="/profile/editexperience" element={<EditExperience />} />

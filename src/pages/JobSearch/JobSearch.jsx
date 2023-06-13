@@ -65,7 +65,7 @@ const JobSearch = () => {
             {vacancies[detailVacancieIndex] ?
             <>
             <p>{vacancies[detailVacancieIndex].charge_name}</p>
-            <button onClick={()=>navigate(`/vacancie/${vacancies[detailVacancieIndex]._id}`)}>
+            <button onClick={()=>navigate(`/applyVacancie/${vacancies[detailVacancieIndex]._id}`)}>
                 Aplicar a oferta
               </button>
             </>:
