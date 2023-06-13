@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Spinner from "../../common/Spinner/Spinner";
-import { getVacancieById } from "../../services/apiCalls";
+import { getVacancieById, removeVacancieById } from "../../services/apiCalls";
 import { formatedDate } from "../../services/functions";
-
+import {RiDeleteBin6Fill} from "react-icons/ri"
 const VacancieDetail = () => {
   const vacancieId = useParams().id;
   const navigate = useNavigate()
@@ -13,18 +13,26 @@ const VacancieDetail = () => {
     getVacancieById(vacancieId)
       .then((res) => {
         setVacancie(res.data);
+        console.log(res.data.user_postulated)
       })
       .catch((e) => {
         console.log(e);
       });
   }, []);
 
+  const removeVacancie = () => {
+    removeVacancieById(vacancieId).then(()=>{
+        navigate("/profile")
+    }).catch((e)=>{
+        console.log(e)
+    })
+  }
   return (
     <>
       {vacancie.charge_name ? (
         <div className="">
-        <button onClick={()=>removeVacancie(vacancie._id)}>
-                            Eliminar Oferta
+        <button onClick={()=>removeVacancie()}>
+                            <RiDeleteBin6Fill/>
         </button>
             <h1>Oferta de {vacancie.charge_name} en {vacancie.location}</h1>
             <p>{vacancie.description}</p>

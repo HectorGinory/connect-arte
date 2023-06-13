@@ -38,8 +38,17 @@ export const editEducationByUserName = async (username, credentials) => {
     return res.data
 }
 
+export const removeEducationByUserName = async(username, credentials) => {
+    const res = await axios.post(`${url}user/educationDelete/${username}`, credentials)
+    return res.data
+}
+
 export const editExperienceByUserName = async (username, credentials) => {
     const res = await axios.put(`${url}user/experience/${username}`, credentials)
+    return res.data
+}
+export const removeExperienceByUserName = async(username, credentials) => {
+    const res = await axios.post(`${url}user/experienceDelete/${username}`, credentials)
     return res.data
 }
 
@@ -63,7 +72,10 @@ export const applyVacancie = async(id, credentials) => {
     const res = await axios.post(`${url}vacancies/apply/${id}`, credentials)
     return res
 }
-
+export const removeVacancieById = async(id) => {
+    const res = await axios.delete(`${url}vacancies/delete/${id}`)
+    return res
+}
 export const getJobVacanciesByUserId = async(userId) => {
     const res = await axios.get(`${url}vacancies/user/${userId}`)
     return res

@@ -33,12 +33,15 @@ const ApplyVacancie = () => {
     getUserByUserName(userRdxData.user.username).then((res) => {});
   }, []);
 
-  const submitInfo = async () => {
+  useEffect(()=> {
     setCredentials((prevState) => ({
-      ...prevState,
-      user_id: userRdxData.user.id,
-      username: userRdxData.user.username
-    }));
+        ...prevState,
+        user_id: userRdxData.user.id,
+        username: userRdxData.user.username
+      }));
+  }, [userRdxData])
+  
+  const submitInfo = async () => {
     applyVacancie(vacancieId, credentials).then((res) => {
       navigate("/profile")
     }).catch((e) => {
