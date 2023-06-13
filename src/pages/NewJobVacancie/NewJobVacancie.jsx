@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 import { InputText } from '../../common/InputText/InputText';
 import { createVacancie } from '../../services/apiCalls';
 import { userData } from '../userSlice';
@@ -30,12 +31,12 @@ const NewJobVacancie = () => {
   const submitInfo = async () => {
     setCredentials((prevState) => ({
       ...prevState,
-      created_by: userRdxData.user._id,
+      created_by: userRdxData.user.id,
     }));
     createVacancie(credentials).then((res) => {
-      console.log(res)
+      navigate("/profile")
     }).catch((e) => {
-      console.log(e)
+      toast.error("Algo fue mal")
     })
   };
 
