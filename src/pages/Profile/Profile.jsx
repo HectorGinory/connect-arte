@@ -36,6 +36,7 @@ const Profile = () => {
         .then(async (res) => {
           setOwnerProfile(true);
           await setUser(res.user);
+          console.log(userRdxData)
         })
         .catch((err) => {
           toast.error("Cant get your user info, try again.");
@@ -46,7 +47,6 @@ const Profile = () => {
         .then(async (res) => {
           setOwnerProfile(false);
           await setUser(res.user);
-          console.lo;
         })
         .catch((err) => {
           toast.error("Cant get your user info, try again.");

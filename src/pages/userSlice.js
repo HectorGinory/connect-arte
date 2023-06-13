@@ -13,6 +13,15 @@ export const userSlice = createSlice({
                 ...action.payload
             }
         },
+        updateUsernameOrEmail: (state, action) => {
+            return {
+                ...state,
+               user: {
+                    ...state.user,
+                    ...action.payload
+               }
+            }
+        },
         logout: (state, action) => {
             return {
                 user: {},
@@ -21,7 +30,7 @@ export const userSlice = createSlice({
         }
     }
 })
-export const { login, logout } = userSlice.actions;
+export const { login, logout, updateUsernameOrEmail } = userSlice.actions;
 
 export const userData = (state) => state.user;
 

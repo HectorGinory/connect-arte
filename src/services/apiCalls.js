@@ -54,6 +54,11 @@ export const getVacancies = async(pageNumber, pageSize, criteria) => {
     return res
 }
 
+export const getVacancieById = async(id) => {
+    const res = await axios.get(`${url}vacancies/${id}`)
+    return res
+}
+
 export const getContriesList = async() => {
     const res = await axios.get('https://restcountries.com/v3.1/all?fields=name')
     return res.data

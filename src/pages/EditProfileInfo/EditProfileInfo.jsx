@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login, userData } from "../userSlice";
+import { login, updateUsernameOrEmail, userData } from "../userSlice";
 import { useState } from "react";
 import { useEffect } from "react";
 import {
@@ -87,7 +87,10 @@ const EditProfileInfo = () => {
     }
     editInfoByUserName(userRdxData.user.username, credentials)
       .then((res) => {
-        dispatch(login(res));
+        const changesRedux = {}
+        if(credentials.username !== "") changesRedux.username = credentials.username
+        if(credentials.email !== "") changesRedux.email = credentials.email
+        dispatch(updateUsernameOrEmail(changesRedux))
         navigate("/profile");
       })
       .catch(() => {
