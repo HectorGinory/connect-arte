@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { InputText } from '../../common/InputText/InputText';
+import { createVacancie } from '../../services/apiCalls';
 import { userData } from '../userSlice';
 
 const NewJobVacancie = () => {
@@ -9,7 +10,7 @@ const NewJobVacancie = () => {
   const userRdxData = useSelector(userData);
 
   const [credentials, setCredentials] = useState({
-    created_by: userRdxData.user.id,
+    created_by: "",
     charge_name: "",
     description: "",
     sector: "",
@@ -20,7 +21,7 @@ const NewJobVacancie = () => {
   });
 
   const credentialsHandler = async (e) => {
-    await setCredentials((prevState) => ({
+    setCredentials((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
@@ -28,7 +29,17 @@ const NewJobVacancie = () => {
 
 
   const submitInfo = async () => {
-
+    setCredentials((prevState) => ({
+      ...prevState,
+      created_by: userRdxData.user._id,
+    }));
+    console.log(credentials)
+    console.log(userRdxData)
+    createVacancie(credentials).then((res) => {
+      console.log(res)
+    }).catch((e) => {
+      console.log(e)
+    })
   };
 
   return (

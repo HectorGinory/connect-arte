@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ButtonIcon from "../../common/Btn-navbar/Btn-navbar";
 import Spinner from "../../common/Spinner/Spinner";
@@ -9,7 +9,11 @@ import { useNavigate } from "react-router-dom";
 const JobSearch = () => {
   const navigate = useNavigate();
   const userRdxData = useSelector(userData);
-  console.log(userRdxData)
+  const [vacancie, getVacancies] = useState([])
+
+  useEffect(() => {
+
+  }, [])
   return (
     <div className="jobvacancies-container">
       <div className="title-container">
