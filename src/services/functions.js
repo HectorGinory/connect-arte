@@ -72,3 +72,4 @@ export const formatedDate = (stringDate) => {
 
   return `${formattedDate}`;
 };
+

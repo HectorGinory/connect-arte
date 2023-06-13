@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 import { InputText } from "../../common/InputText/InputText";
 import Spinner from "../../common/Spinner/Spinner";
-import { getUserByUserName, getVacancieById } from "../../services/apiCalls";
+import { applyVacancie, getUserByUserName, getVacancieById } from "../../services/apiCalls";
 import { userData } from "../userSlice";
 
 const ApplyVacancie = () => {
+    const navigate = useNavigate()
   const userRdxData = useSelector(userData);
-  const [credentials, setCredentials] = useState({});
+  const [credentials, setCredentials] = useState({
+    "answer_one": "",
+    "answer_two": "",
+    "answer_three": "",
+    "presentation": ""
+  });
   const vacancieId = useParams().id;
   const [vacancie, setVacancie] = useState({});
 
@@ -22,11 +29,22 @@ const ApplyVacancie = () => {
   useEffect(() => {
     getVacancieById(vacancieId).then((res) => {
       setVacancie(res.data);
-      console.log(res.data);
-      console.log(userRdxData);
     });
     getUserByUserName(userRdxData.user.username).then((res) => {});
   }, []);
+
+  const submitInfo = async () => {
+    setCredentials((prevState) => ({
+      ...prevState,
+      user_id: userRdxData.user.id,
+      username: userRdxData.user.username
+    }));
+    applyVacancie(vacancieId, credentials).then((res) => {
+      navigate("/profile")
+    }).catch((e) => {
+      toast.error("Algo fue mal")
+    })
+}
   return (
     <div className="">
       {vacancie._id ? (
@@ -80,6 +98,29 @@ const ApplyVacancie = () => {
               />
             </label>
           )}
+          <label className="flex align-c f-column justify-c justify-sb">
+            <div className="flex f-column justify-c original-info">
+              <p>Aprovecha para presentarte!</p>
+            </div>
+            <textarea
+              type="text"
+              className="input-textarea"
+              placeholder="E.: Mi nombre es X soy ..."
+              name="presentation"
+              onChange={(e) => credentialsHandler(e)}
+              required
+              value={credentials.presentation}
+              style={{ width: 100 + "%" }}
+            />
+          </label>
+          <div className="btn-section">
+          <button onClick={() => submitInfo()} className="btn">
+          Aceptar cambios
+        </button>
+        <button onClick={() => navigate("/jobsearch")} className="btn">
+          Cancelar
+        </button>
+        </div>
         </div>
       ) : (
         <div className="flex align-c justify-c">

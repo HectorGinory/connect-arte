@@ -59,6 +59,11 @@ export const getVacancieById = async(id) => {
     return res
 }
 
+export const applyVacancie = async(id, credentials) => {
+    const res = await axios.post(`${url}vacancies/apply/${id}`, credentials)
+    return res
+}
+
 export const getContriesList = async() => {
     const res = await axios.get('https://restcountries.com/v3.1/all?fields=name')
     return res.data
