@@ -18,7 +18,7 @@ import {
   removeExperienceByUserName,
 } from "../../services/apiCalls";
 import { toast } from "sonner";
-RiDeleteBin6Fill
+RiDeleteBin6Fill;
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { FaPencilAlt, FaUserPlus } from "react-icons/fa";
 import ButtonIcon from "../../common/ButtonIcon/ButtonIcon";
@@ -61,23 +61,27 @@ const Profile = () => {
   }, []);
 
   const removeEducation = (education) => {
-    removeEducationByUserName(userRdxData.user.username, education).then((res)=>{
-      setUser(res.user);
-    })
-  }
+    removeEducationByUserName(userRdxData.user.username, education).then(
+      (res) => {
+        setUser(res.user);
+      }
+    );
+  };
 
   const removeExperience = (experience) => {
-    removeExperienceByUserName(userRdxData.user.username, experience).then((res)=>{
-      setUser(res.user);
-    })
-  }
+    removeExperienceByUserName(userRdxData.user.username, experience).then(
+      (res) => {
+        setUser(res.user);
+      }
+    );
+  };
 
   return (
     <div className="flex justify-c profile-container">
       {user ? (
         <div className="flex align-c f-column profile-info ">
           <div className="profile-img">
-          <div className="banner-profile purpleGradient-box "/>
+            <div className="banner-profile purpleGradient-box " />
             <img
               src={profilePicture}
               alt="profile-picture"
@@ -95,56 +99,58 @@ const Profile = () => {
               )}
             </div>
             <div className="user-info">
-            <div className="generalInfo-container">
-            <h1>{firstToUpperCase(user.name)}</h1>
-              <h2>@{firstToUpperCase(user.username)}</h2>
-              <p>{firstToUpperCase(user.location)}</p>
-              <p>{printDateProfile(user.dateOfCreation)}</p>
-              <p>{"Tiene " + user.contacts.length + " contactos"}</p>
-              <div className="common-contacts"></div>
-              <div className="contact-section">
-                {!ownerProfile && (
-                  <ButtonIcon
-                    ReactIcon={FaUserPlus}
-                    onClick={() => console.log()}
-                    text={"Contactar"}
-                  ></ButtonIcon>
-                )}
-              </div>
-            </div>
-            {user.description !== "" &&
-            <div className="about-container">
-                <div className="flex align-c title purpleGradient-box">
-                <h3>Acerca de</h3>
+              <div className="generalInfo-container">
+                <h1>{firstToUpperCase(user.name)}</h1>
+                <h2>@{firstToUpperCase(user.username)}</h2>
+                <p>{firstToUpperCase(user.location)}</p>
+                <p>{printDateProfile(user.dateOfCreation)}</p>
+                <p>{"Tiene " + user.contacts.length + " seguidores"}</p>
+                <div className="common-contacts"></div>
+                <div className="contact-section">
+                  {!ownerProfile && (
+                    <ButtonIcon
+                      ReactIcon={FaUserPlus}
+                      onClick={() => console.log()}
+                      text={"Contactar"}
+                    ></ButtonIcon>
+                  )}
                 </div>
-                <p>{user.description}</p>
-              </div>}
+              </div>
+              {user.description !== "" && (
+                <div className="about-container">
+                  <div className="flex align-c title purpleGradient-box">
+                    <h3>Acerca de</h3>
+                  </div>
+                  <p>{user.description}</p>
+                </div>
+              )}
               {user.rol === "user" ? (
                 <>
                   <div className="flex justify-c f-column info-section">
                     <div className="flex align-c justify-sb info-title">
-                  <div className="flex justify-sb align-c title purpleGradient-box">
-                      <h3>Educación</h3>
-                      {ownerProfile && (
-                        <ButtonIcon
-                          ReactIcon={FaPencilAlt}
-                          onClick={() => navigate("./EditEducation")}
-                          text={"Añadir educación"}
-                        ></ButtonIcon>
-                      )}
-                </div>
+                      <div className="flex justify-sb align-c title purpleGradient-box">
+                        <h3>Educación</h3>
+                        {ownerProfile && (
+                          <ButtonIcon
+                            ReactIcon={FaPencilAlt}
+                            onClick={() => navigate("./EditEducation")}
+                            text={"Añadir educación"}
+                          ></ButtonIcon>
+                        )}
+                      </div>
                     </div>
                     <div className="data-container">
                       {user.education.map((education, index) => {
                         return (
                           <div className="flex f-column data" key={index}>
                             <div className="flex f-column principal-info">
-
                               <div>
-                                <p>
+                                <p className="name-data">
                                   {education.title} - {education.school}
                                 </p>
-                                <p>{education.discipline}</p>
+                                <p className="extra-data">
+                                  {education.discipline}
+                                </p>
                               </div>
                               <div>
                                 <p>
@@ -157,9 +163,9 @@ const Profile = () => {
                               <p>{education.description}</p>
                             </div>
                             {ownerProfile && (
-                            <button onClick={() => removeEducation(education)}>
-                                  <RiDeleteBin6Fill />
-                                </button>
+                              <ButtonIcon ReactIcon={RiDeleteBin6Fill}
+                              text="Eliminar"
+                              onClick={() => removeEducation(education)}/>
                             )}
                           </div>
                         );
@@ -168,16 +174,16 @@ const Profile = () => {
                   </div>
                   <div className="flex justify-c f-column info-section">
                     <div className="flex align-c justify-sb info-title">
-                  <div className="flex justify-sb align-c title purpleGradient-box">
-                      <h3>Experiencia</h3>
-                      {ownerProfile && (
-                        <ButtonIcon
-                          ReactIcon={FaPencilAlt}
-                          onClick={() => navigate("./EditExperience")}
-                          text={"Añadir experiencia"}
-                        ></ButtonIcon>
-                      )}
-                    </div>
+                      <div className="flex justify-sb align-c title purpleGradient-box">
+                        <h3>Experiencia</h3>
+                        {ownerProfile && (
+                          <ButtonIcon
+                            ReactIcon={FaPencilAlt}
+                            onClick={() => navigate("./EditExperience")}
+                            text={"Añadir experiencia"}
+                          ></ButtonIcon>
+                        )}
+                      </div>
                     </div>
                     <div className="data-container">
                       {user.experience.map((experience, index) => {
@@ -185,8 +191,7 @@ const Profile = () => {
                           <div className="flex f-column data" key={index}>
                             <div className="flex f-column principal-info">
                               <div>
-  
-                                <p>
+                                <p className="name-data">
                                   {experience.position} - {experience.company}
                                 </p>
                                 <p>{experience.location}</p>
@@ -204,9 +209,9 @@ const Profile = () => {
                               <p>{experience.description}</p>
                             </div>
                             {ownerProfile && (
-                            <button onClick={() => removeExperience(experience)}>
-                                  <RiDeleteBin6Fill />
-                                </button>
+                              <ButtonIcon ReactIcon={RiDeleteBin6Fill}
+                              text="Eliminar"
+                              onClick={() => removeExperience(experience)}/>
                             )}
                           </div>
                         );
@@ -216,7 +221,7 @@ const Profile = () => {
                 </>
               ) : (
                 <div className="flex justify-c f-column info-section">
-                  <div className="flex align-c justify-sb info-title">
+                  <div className="flex align-c justify-sb info-title title purpleGradient-box">
                     <h3>Ofertas de empleo activas</h3>
                     {ownerProfile && (
                       <ButtonIcon

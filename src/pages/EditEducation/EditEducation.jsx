@@ -48,9 +48,9 @@ const EditEducation = () => {
   };
 
   return (
-    <div className="flex align-c justify-c f-column edit-container">
-      <h1>Añade tu experiencia</h1>
-      <label className="flex align-c f-column justify-c justify-sb">
+    <div className="flex align-c f-column edit-container ">
+      <h1>Añade dónde te has formado</h1>
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Escuela:</p>
         </div>
@@ -64,7 +64,7 @@ const EditEducation = () => {
           value={credentials.school}
         />
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Título:</p>
         </div>
@@ -78,7 +78,7 @@ const EditEducation = () => {
           value={credentials.title}
         />
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Disciplina:</p>
         </div>
@@ -93,20 +93,20 @@ const EditEducation = () => {
         />
       </label>
       <div className="flex align-c justify-sb date-label-container">
-      <label className="flex f-column justify-c date-label">
-        <div className="flex f-column justify-c original-info">
+      <label className="flex f-column justify-c align-c date-label purpleGradient-box">
+        <div className="flex f-column justify-c align-c original-info">
           <p>Fecha de incio:</p>
         </div>
         <input type="date" name="date_start" onChange={(e)=>credentialsHandler(e)}/>
       </label>
-      <label className="flex f-column justify-c date-label">
-        <div className="flex f-column justify-c original-info">
+      <label className="flex f-column justify-c align-c date-label purpleGradient-box">
+        <div className="flex f-column justify-c align-c original-info">
           <p>Fecha de fin:</p>
         </div>
         <input type="date" name="date_end" onChange={(e)=>credentialsHandler(e)}/>
       </label>
       </div>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Descripcion de la educación:</p>
         </div>
@@ -118,10 +118,10 @@ const EditEducation = () => {
               onChange={(e) => credentialsHandler(e)}
               required
               value={credentials.description}
-              style={{width: 100 + '%'}}
+              style={{width: 95 + '%'}}
             />
       </label>
-      <div className="btn-container">
+      <div className="flex align-c justify-c btn-container">
         <button onClick={() => submitInfo()} className="btn">
           Aceptar cambios
         </button>

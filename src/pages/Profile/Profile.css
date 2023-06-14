@@ -81,6 +81,11 @@
     height: 15rem;
 }
 
+.profile-text .about-container p {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+}
 .profile-text .about-container .title {
     height: 5rem;
     color: var(--white);
@@ -110,4 +115,41 @@
 
 .profile-container .info-section .data-container {
     min-height: 10rem;
+}
+
+.profile-container .info-section .data .name-data {
+    font-weight: 600;
+}
+
+.profile-container .info-section .data .extra-data {
+    font-style: italic;
+}
+
+.profile-container .info-section .data .btn-navigation {
+    width: 10rem;
+}
+
+.profile-container .info-section .data .btn-navigation:hover p {
+    font-weight: 600;
+}
+
+@media (max-width: 500px) {
+    .profile-text .user-info h3 {
+        font-size: 1.3rem;
+        font-weight: 400;
+        letter-spacing: .1rem;
+    }
+
+    .profile-text  .btn-navigation {
+        font-size: .9rem;
+        padding: .2rem .7rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .profile-info .profile-img .profile-picture {
+        height: 7rem;
+        translate: 2rem -4rem;
+        
+    }
 }
