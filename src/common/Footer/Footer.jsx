@@ -5,7 +5,7 @@ import { firstToUpperCase } from "../../services/functions";
 import profilePicture from "../../assets/profile-picture.png";
 import { useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
-import BtnNavbar from "../Btn-navbar/Btn-navbar";
+import BtnNavbar from "../ButtonIcon/ButtonIcon";
 import { FaUsers } from "react-icons/fa";
 import { RiLoginCircleLine, RiLogoutCircleLine} from "react-icons/ri";
 const Footer = () => {

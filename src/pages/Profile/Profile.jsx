@@ -21,7 +21,7 @@ import { toast } from "sonner";
 RiDeleteBin6Fill
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { FaPencilAlt, FaUserPlus } from "react-icons/fa";
-import ButtonIcon from "../../common/Btn-navbar/Btn-navbar";
+import ButtonIcon from "../../common/ButtonIcon/ButtonIcon";
 import Spinner from "../../common/Spinner/Spinner";
 
 const Profile = () => {
@@ -77,11 +77,7 @@ const Profile = () => {
       {user ? (
         <div className="flex align-c f-column profile-info ">
           <div className="profile-img">
-            <img
-              src={profileBanner}
-              alt="banner-profile"
-              className="banner-profile"
-            />
+          <div className="banner-profile purpleGradient-box "/>
             <img
               src={profilePicture}
               alt="profile-picture"
@@ -99,7 +95,8 @@ const Profile = () => {
               )}
             </div>
             <div className="user-info">
-              <h1>{firstToUpperCase(user.name)}</h1>
+            <div className="generalInfo-container">
+            <h1>{firstToUpperCase(user.name)}</h1>
               <h2>@{firstToUpperCase(user.username)}</h2>
               <p>{firstToUpperCase(user.location)}</p>
               <p>{printDateProfile(user.dateOfCreation)}</p>
@@ -114,14 +111,19 @@ const Profile = () => {
                   ></ButtonIcon>
                 )}
               </div>
-              <div className="about-container">
+            </div>
+            {user.description !== "" &&
+            <div className="about-container">
+                <div className="flex align-c title purpleGradient-box">
                 <h3>Acerca de</h3>
+                </div>
                 <p>{user.description}</p>
-              </div>
+              </div>}
               {user.rol === "user" ? (
                 <>
                   <div className="flex justify-c f-column info-section">
                     <div className="flex align-c justify-sb info-title">
+                  <div className="flex justify-sb align-c title purpleGradient-box">
                       <h3>Educación</h3>
                       {ownerProfile && (
                         <ButtonIcon
@@ -130,6 +132,7 @@ const Profile = () => {
                           text={"Añadir educación"}
                         ></ButtonIcon>
                       )}
+                </div>
                     </div>
                     <div className="data-container">
                       {user.education.map((education, index) => {
@@ -165,6 +168,7 @@ const Profile = () => {
                   </div>
                   <div className="flex justify-c f-column info-section">
                     <div className="flex align-c justify-sb info-title">
+                  <div className="flex justify-sb align-c title purpleGradient-box">
                       <h3>Experiencia</h3>
                       {ownerProfile && (
                         <ButtonIcon
@@ -173,6 +177,7 @@ const Profile = () => {
                           text={"Añadir experiencia"}
                         ></ButtonIcon>
                       )}
+                    </div>
                     </div>
                     <div className="data-container">
                       {user.experience.map((experience, index) => {

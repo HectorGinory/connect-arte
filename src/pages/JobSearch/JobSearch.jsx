@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import ButtonIcon from "../../common/Btn-navbar/Btn-navbar";
+import ButtonIcon from "../../common/ButtonIcon/ButtonIcon";
 import Spinner from "../../common/Spinner/Spinner";
 import { userData } from "../userSlice";
 import { FaPencilAlt } from "react-icons/fa";

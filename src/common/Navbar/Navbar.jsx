@@ -11,7 +11,7 @@ import { FaUsers } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
 import { RiLoginCircleLine, RiLogoutCircleLine} from "react-icons/ri";
 import profilePicture from "../../assets/profile-picture.png";
-import ButtonIcon from "../Btn-navbar/Btn-navbar";
+import ButtonIcon from "../ButtonIcon/ButtonIcon";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
