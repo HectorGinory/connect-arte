@@ -10,8 +10,11 @@
     color: var(--first);
 }
 .edit-info-container label {
-    width: 70%;
+    width: 90%;
     height: auto;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: .5rem;
 }
 .edit-info-container label .name-length{
     width: 100%;
@@ -27,7 +30,7 @@
 }
 
 .edit-info-container label .original-info p:first-child {
-    color: var(--first);
+    color: var(--white);
     font-size: 1.1rem;
     font-weight: 500;
 }
@@ -50,7 +53,7 @@
     border-radius: .5rem;
     outline: none;
     text-align: center;
-    border: .1rem solid var(--first);
+    border: .1rem solid var(--white);
     color: var(--darkfirst);
 }
 .edit-info-container label .input-container .input::placeholder {
@@ -76,10 +79,9 @@
     overflow-y: auto;
     overflow-x: hidden;
     width: 95%;
-    border: 1px solid var(--first);
-    translate: 0 -1rem;
-    background: var(--white);
-    border-radius: 0 0 .4rem .4rem;
+    border: 1px solid var(--darkfirst);
+    background: linear-gradient(-15deg, var(--grey), var(--white));
+    border-radius: .4rem;
 }
 .country-map p {
     color: var(--first);

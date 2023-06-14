@@ -107,9 +107,9 @@ const EditProfileInfo = () => {
   };
 
   return (
-    <div className="flex align-c f-column edit-info-container">
+    <div className="flex align-c f-column edit-info-container ">
       <h1>Change your profile info</h1>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Actual name:</p>
           <p>{user.name}</p>
@@ -125,7 +125,7 @@ const EditProfileInfo = () => {
         />
         <p className="name-length">{credentials.name.length}/20</p>
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Actual email:</p>
           <p>{user.email}</p>
@@ -140,7 +140,7 @@ const EditProfileInfo = () => {
           value={credentials.email}
         />
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Actual username:</p>
           <p>{user.username}</p>
@@ -155,7 +155,7 @@ const EditProfileInfo = () => {
           value={credentials.username}
         />
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Actual description:</p>
           {user.description === "" ? (
@@ -164,7 +164,7 @@ const EditProfileInfo = () => {
             <p className="descrition">{user.description}</p>
           )}
         </div>
-        <div className="description-input">
+        <div className="description-input ">
           <div className="input-container">
             <textarea
               type="text"
@@ -180,7 +180,7 @@ const EditProfileInfo = () => {
           <p>{credentials.description.length}/150</p>
         </div>
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Actual location:</p>
           {user.location === "" ? <br /> : <p>{user.location}</p>}
@@ -195,7 +195,7 @@ const EditProfileInfo = () => {
             required={true}
             value={firstToUpperCase(credentials.location)}
           />
-          <div className="country-map">
+          <div className="country-map ">
             {credentials.location === "" ? (
               <br />
             ) : (

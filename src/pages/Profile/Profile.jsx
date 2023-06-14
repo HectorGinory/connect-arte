@@ -240,9 +240,10 @@ const Profile = () => {
                             onClick={() =>
                               navigate(`/vacancieDetail/${vacancie._id}`)
                             }
+                            className="data"
                           >
-                            <p>{vacancie.charge_name}</p>
-                            <p>
+                            <p className="name-data">{vacancie.charge_name} - {vacancie.location}</p>
+                            <p className="extra-data">
                               {vacancie.user_postulated.length} usuarios
                               presentados
                             </p>
