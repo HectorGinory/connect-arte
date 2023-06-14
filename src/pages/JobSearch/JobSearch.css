@@ -1,0 +1,33 @@
+.jobvacancies-container {
+    width: 100%;
+    height: 100%;
+    padding-top: 3rem;
+    overflow: auto;
+}
+
+.jobvacancies-container .title-container {
+    width: 90%;
+}
+
+.title-container .btn-navigation {
+    border: 1px solid var(--first);
+    color: var(--white);
+    background: var(--first);
+    font-size: 1.1rem;
+}
+
+.jobvacancies-container .vacancies-container {
+    width: 90%;
+    border: 1px solid black;
+    height: 40rem;
+}
+
+.jobvacancies-container .vacancies-container .filter-vacancies {
+    width: 100%;
+    height: 10rem;
+    border-bottom: 1px solid black;
+}
+
+.jobvacancies-container .vacancies-container .vacancie-detail {
+    width: 100%;
+}

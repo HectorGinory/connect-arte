@@ -4,17 +4,22 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 import { InputText } from "../../common/InputText/InputText";
 import Spinner from "../../common/Spinner/Spinner";
-import { applyVacancie, getUserByUserName, getVacancieById } from "../../services/apiCalls";
+import {
+  applyVacancie,
+  getUserByUserName,
+  getVacancieById,
+} from "../../services/apiCalls";
 import { userData } from "../userSlice";
+import './ApplyVacancie.css'
 
 const ApplyVacancie = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate();
   const userRdxData = useSelector(userData);
   const [credentials, setCredentials] = useState({
-    "answer_one": "",
-    "answer_two": "",
-    "answer_three": "",
-    "presentation": ""
+    answer_one: "",
+    answer_two: "",
+    answer_three: "",
+    presentation: "",
   });
   const vacancieId = useParams().id;
   const [vacancie, setVacancie] = useState({});
@@ -33,28 +38,30 @@ const ApplyVacancie = () => {
     getUserByUserName(userRdxData.user.username).then((res) => {});
   }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
     setCredentials((prevState) => ({
-        ...prevState,
-        user_id: userRdxData.user.id,
-        username: userRdxData.user.username
-      }));
-  }, [userRdxData])
-  
+      ...prevState,
+      user_id: userRdxData.user.id,
+      username: userRdxData.user.username,
+    }));
+  }, [userRdxData]);
+
   const submitInfo = async () => {
-    applyVacancie(vacancieId, credentials).then((res) => {
-      navigate("/profile")
-    }).catch((e) => {
-      toast.error("Algo fue mal")
-    })
-}
+    applyVacancie(vacancieId, credentials)
+      .then((res) => {
+        navigate("/profile");
+      })
+      .catch((e) => {
+        toast.error("Algo fue mal");
+      });
+  };
   return (
-    <div className="">
+    <div className="flex align-c f-column vacancie-apply-container">
       {vacancie._id ? (
-        <div className="vacancie-form-container">
+        <div className="flex f-column align-c vacancie-form-container">
           <h2>Rellena el formulario</h2>
           {vacancie.question_one && (
-            <label className="flex align-c f-column justify-c justify-sb">
+            <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
               <div className="flex f-column justify-c original-info">
                 <p>{vacancie.question_one}</p>
               </div>
@@ -70,7 +77,7 @@ const ApplyVacancie = () => {
             </label>
           )}
           {vacancie.question_two && (
-            <label className="flex align-c f-column justify-c justify-sb">
+            <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
               <div className="flex f-column justify-c original-info">
                 <p>{vacancie.question_two}</p>
               </div>
@@ -86,7 +93,7 @@ const ApplyVacancie = () => {
             </label>
           )}
           {vacancie.question_three && (
-            <label className="flex align-c f-column justify-c justify-sb">
+            <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
               <div className="flex f-column justify-c original-info">
                 <p>{vacancie.question_three}</p>
               </div>
@@ -101,7 +108,7 @@ const ApplyVacancie = () => {
               />
             </label>
           )}
-          <label className="flex align-c f-column justify-c justify-sb">
+          <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
             <div className="flex f-column justify-c original-info">
               <p>Aprovecha para presentarte!</p>
             </div>
@@ -113,17 +120,17 @@ const ApplyVacancie = () => {
               onChange={(e) => credentialsHandler(e)}
               required
               value={credentials.presentation}
-              style={{ width: 100 + "%" }}
+              style={{ width: 90 + "%" }}
             />
           </label>
-          <div className="btn-section">
-          <button onClick={() => submitInfo()} className="btn">
-          Aceptar cambios
-        </button>
-        <button onClick={() => navigate("/jobsearch")} className="btn">
-          Cancelar
-        </button>
-        </div>
+          <div className="flex align-c btn-container">
+            <button onClick={() => submitInfo()} className="btn">
+              Enviar
+            </button>
+            <button onClick={() => navigate("/jobsearch")} className="btn">
+              Cancelar
+            </button>
+          </div>
         </div>
       ) : (
         <div className="flex align-c justify-c">

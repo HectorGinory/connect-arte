@@ -1,0 +1,71 @@
+.vacancie-apply-container {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.vacancie-form-container {
+    width: 90%;
+    gap: 1rem;
+}
+
+.vacancie-form-container h2 {
+    color: var(--darkfirst);
+}
+
+.vacancie-form-container label {
+    width: 100%;
+    padding: .5rem;
+    gap: .5rem;
+    box-sizing: border-box;
+    border-radius: .5rem;
+}
+
+.vacancie-form-container label .input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.vacancie-form-container label .input {
+    width: 90%;
+}
+.vacancie-form-container label textarea {
+    resize: none;
+    height: 5rem;
+    box-sizing: border-box;
+    padding: .5rem;
+}
+
+.vacancie-form-container .btn {
+    padding: .6rem;
+    background: linear-gradient(to top, var(--darkfirst), var(--first));
+    color: white;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border: .1rem solid var(--first);
+    margin: 0.5rem 0.5rem 2rem;
+    border-radius: .3rem;
+    transition: .2s;
+    font-weight: 300;
+    width: 12rem;
+}
+.vacancie-form-container .btn:hover {
+    filter: brightness(1.3);
+    border-radius: 1.2rem;
+    font-weight: 500;
+}
+
+@media (max-height: 750px) {
+    .vacancie-apply-container {
+        justify-content: flex-start;
+        margin-top: 3rem;
+    }
+}
+@media (max-width: 750px) {
+    .vacancie-apply-container .btn-container {
+        flex-direction: column;
+    }
+    .vacancie-apply-container .btn {
+        margin: .5rem;
+    }
+}

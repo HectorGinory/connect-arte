@@ -12,9 +12,7 @@ import {
 
 import "./EditProfileInfo.css";
 import { InputText } from "../../common/InputText/InputText";
-
-import ReactCrop from "react-image-crop";
-import "react-image-crop/dist/ReactCrop.css";
+import { FaUsers, FaUser} from 'react-icons/fa'
 import { toast } from "sonner";
 import { firstToUpperCase } from "../../services/functions";
 
@@ -90,6 +88,7 @@ const EditProfileInfo = () => {
         const changesRedux = {}
         if(credentials.username !== "") changesRedux.username = credentials.username
         if(credentials.email !== "") changesRedux.email = credentials.email
+        if(credentials.rol !== "") changesRedux.rol = credentials.rol
         dispatch(updateUsernameOrEmail(changesRedux))
         navigate("/profile");
       })
@@ -218,16 +217,25 @@ const EditProfileInfo = () => {
           </div>
         </div>
       </label>
-      <div className="change-rol-ontainer">
-        <button onClick={() => changerol()} className="changerol-button">
-          <div className="flex align-c justify-c icon-btn">
-            {/* <ReactIcon /> */}
+      <div className="flex align-c justify-c change-rol-container">
+        <button onClick={() => changerol()} className="flex align-c justify-c changerol-button">
+        {userRol === "user"? 
+        <>
+        <div className="flex align-c justify-c icon-btn">
+          <FaUser/>
           </div>
-          <p>
-            {userRol === "user"
-              ? "Tu rol actual es usuario"
-              : "Tu rol actual es empresa"}
+          <p>Tu rol actual es usuario
+            
           </p>
+        </>: 
+        <>
+        <div className="flex align-c justify-c icon-btn">
+          <FaUsers/>
+          </div>
+          <p>Tu rol actual es empresa
+            
+          </p>
+        </>}
         </button>
       </div>
       <div className="btn-container">

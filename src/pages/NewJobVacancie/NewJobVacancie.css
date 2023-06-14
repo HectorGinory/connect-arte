@@ -1,0 +1,15 @@
+.edit-container .questions-container {
+    width: 90%;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.edit-container {
+    margin-bottom: 2rem;
+}
+
+.edit-container .date-label {
+    width: 100%;
+}

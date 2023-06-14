@@ -6,6 +6,7 @@ import { userData } from "../userSlice";
 import { FaPencilAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { getVacancies } from "../../services/apiCalls";
+import './JobSearch.css'
 
 const JobSearch = () => {
   const navigate = useNavigate();
@@ -37,19 +38,19 @@ const JobSearch = () => {
   }, [criteria]);
 
   return (
-    <div className="jobvacancies-container">
-      <div className="title-container">
+    <div className="flex f-column align-c jobvacancies-container">
+      <div className="flex align-c justify-sb title-container">
         <h1>Ofertas de empleo</h1>
-        {/* {userRdxData.user.rol === "company" && (
+        {userRdxData.user.rol === "company" && (
           <ButtonIcon
             ReactIcon={FaPencilAlt}
             onClick={() => navigate("/newvacancie")}
             text={"Añadir oferta"}
           ></ButtonIcon>
-        )} */}
+        )}
       </div>
-      <div className="vacancies-container">
-        <div className="filter-vacancies">
+      <div className="flex align-c f-column vacancies-container">
+        <div className="flex align-c f-column filter-vacancies">
           <div className="input-criteria">
             <input onChange={(e) => criteriaHandler(e)} name="criteria" type="text"/>
           </div>

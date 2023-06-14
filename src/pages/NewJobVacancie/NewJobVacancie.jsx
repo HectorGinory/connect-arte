@@ -5,6 +5,7 @@ import { toast } from 'sonner';
 import { InputText } from '../../common/InputText/InputText';
 import { createVacancie } from '../../services/apiCalls';
 import { userData } from '../userSlice';
+import './NewJobVacancie.css'
 
 const NewJobVacancie = () => {
   const navigate = useNavigate();
@@ -41,9 +42,9 @@ const NewJobVacancie = () => {
   };
 
   return (
-    <div className="flex align-c justify-c f-column edit-container">
+    <div className="flex align-c f-column edit-container">
       <h1>Crea una nueva oferta</h1>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Nombre del cargo:</p>
         </div>
@@ -57,7 +58,7 @@ const NewJobVacancie = () => {
           value={credentials.charge_name}
         />
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Sector del proyecto:</p>
         </div>
@@ -71,7 +72,7 @@ const NewJobVacancie = () => {
           value={credentials.sector}
         />
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Ubicación:</p>
         </div>
@@ -85,15 +86,7 @@ const NewJobVacancie = () => {
           value={credentials.location}
         />
       </label>
-      <div className="flex align-c justify-sb date-label-container">
-      <label className="flex f-column justify-c date-label">
-        <div className="flex f-column justify-c original-info">
-          <p>Fecha máxima para presentarse:</p>
-        </div>
-        <input type="date" name="last_day" onChange={(e)=>credentialsHandler(e)}/>
-      </label>
-      </div>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Descripcion del puesto:</p>
         </div>
@@ -108,9 +101,9 @@ const NewJobVacancie = () => {
               style={{width: 100 + '%'}}
             />
       </label>
-      <div className='questions-container'>
+      <div className='flex f-column align-c justify-c questions-container'>
         <p>Añade hasta 3 preguntas para los usuarios que se presenten</p>
-        <label className="flex align-c f-column justify-c justify-sb">
+        <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Primera pregunta:</p>
         </div>
@@ -124,7 +117,7 @@ const NewJobVacancie = () => {
           value={credentials.question_one}
         />
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Segunda pregunta:</p>
         </div>
@@ -138,7 +131,7 @@ const NewJobVacancie = () => {
           value={credentials.question_two}
         />
       </label>
-      <label className="flex align-c f-column justify-c justify-sb">
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Tercera pregunta:</p>
         </div>
@@ -153,7 +146,15 @@ const NewJobVacancie = () => {
         />
       </label>
       </div>
-      <div className="btn-container">
+      <div className="flex align-c justify-c date-label-container">
+      <label className="flex f-column align-c justify-c date-label purpleGradient-box">
+        <div className="flex f-column align-c justify-c original-info">
+          <p>Fecha máxima para presentarse:</p>
+        </div>
+        <input type="date" name="last_day" onChange={(e)=>credentialsHandler(e)}/>
+      </label>
+      </div>
+      <div className="flex btn-container">
         <button onClick={() => submitInfo()} className="btn">
           Aceptar cambios
         </button>

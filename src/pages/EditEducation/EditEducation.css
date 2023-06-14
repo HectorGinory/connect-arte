@@ -47,7 +47,7 @@
 .edit-container .date-label-container {
     width: 90%;
 }
-.edit-container .date-label {
+.edit-container .date-label-container .date-label {
     width: 40%;
     min-width: 12rem;
     box-sizing: border-box;
