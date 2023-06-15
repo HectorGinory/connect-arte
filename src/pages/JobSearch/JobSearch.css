@@ -3,7 +3,7 @@
     height: 100%;
     padding-top: 3rem;
     box-sizing: border-box;
-    overflow: auto;
+    overflow-x: scroll;
     gap: 2rem;
 }
 
@@ -11,6 +11,13 @@
     width: 90%;
 }
 
+.jobvacancies-container .page-btn {
+    padding: .2rem;
+    font-weight: 500;
+    color: var(--darkfirst);
+    background: var(--white);
+    border: var(--darkfirst);
+}
 .title-container .btn-navigation {
     border: 1px solid var(--first);
     color: var(--white);
@@ -47,6 +54,7 @@
     color: var(--first);
     font-weight: 600;
     text-align: center;
+    overflow: auto;
 }
 
 .jobvacancies-container .vacancies-container .filter-vacancies .vacancies-map .vacancie {

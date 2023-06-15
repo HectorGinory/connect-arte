@@ -16,6 +16,7 @@ const JobSearch = () => {
   const [criteria, setCriteria] = useState("");
   const [detailVacancieIndex, setDetailVacancieIndex] = useState(NaN);
   const [actualPage, setActualPage] = useState(1);
+  const [totalPage, setTotalPage] = useState()
 
   useEffect(() => {
     getVacancies(actualPage, 10, criteria).then((res) => {
@@ -32,12 +33,13 @@ const JobSearch = () => {
       getVacancies(actualPage, 10, criteria)
         .then((res) => {
           setVacancies(res.data.data);
-          setDetailVacancieIndex(NaN);
+          setTotalPage(res.data.totalPages);
+          console.log(res.data)
         })
         .catch((error) => console.log(error));
     }, 375);
     return () => clearTimeout(bringVacancies);
-  }, [criteria]);
+  }, [criteria, actualPage]);
 
   return (
     <div className="flex f-column align-c jobvacancies-container ">
@@ -74,6 +76,15 @@ const JobSearch = () => {
                 </div>
               );
             })}
+          </div>
+          <div className="page-container">
+          {actualPage > 1 &&
+            <button className="page-btn" onClick={()=>setActualPage(actualPage-1)}>{actualPage-1}</button>
+          }
+          <button className="page-btn">{actualPage}</button>
+          {actualPage !== totalPage &&
+            <button className="page-btn" onClick={()=>setActualPage(actualPage+1)}>{actualPage+1}</button>
+          }
           </div>
         </div>
         <div className="flex align-c justify-c vacancie-detail">
