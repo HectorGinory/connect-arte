@@ -1,0 +1,122 @@
+.vacanciedetail-container {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  box-sizing: border-box;
+  color: var(--first);
+  overflow: auto;
+}
+
+.vacanciedetail-container .remove-btn {
+padding: .5rem;
+  font-size: 2rem;
+  border-radius: 50%;
+  align-self: flex-end;
+  border: 1px solid var(--first);
+  background: var(--white);
+  color: var(--first);
+}
+
+.vacanciedetail-container .remove-btn:hover {
+  border: 1px solid var(--white);
+  background: rgb(177, 5, 5);
+  color: var(--white);
+  transition: 0.4s;
+}
+
+.vacanciedetail-container .text {
+  width: 100%;
+}
+.vacanciedetail-container h1 {
+  font-size: 2.5rem;
+  color: var(--darkfirst);
+  margin-bottom: 1rem;
+}
+
+.vacanciedetail-container .text p {
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+
+.vacanciedetail-container .text .question {
+  margin: 1rem 3rem;
+  font-style: italic;
+}
+
+.vacanciedetail-container .postulated-container {
+  max-height: 15rem;
+  min-height: 10rem;
+  width: 90%;
+  overflow: auto;
+  border-radius: 1rem;
+  box-shadow: 0 0 0.5rem .2rem var(--lightfirst),
+             0 0 0.8rem 0.2rem var(--first),
+                0 0 0 1rem var(--darkfirst);
+  background: linear-gradient(5deg, rgb(218, 208, 208), var(--white));
+  margin-top: 2rem;
+}
+
+.vacanciedetail-container .postulated-container .response {
+  width: 100%;
+  background: linear-gradient(5deg, rgb(218, 208, 208), var(--white));
+  min-height: 10rem;
+  box-sizing: border-box;
+  padding: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--first);
+}
+
+.vacanciedetail-container .postulated-container .response .user-info {
+    min-height: 10rem;
+    box-sizing: border-box;
+    padding: 1rem;
+    width: 30%;
+}
+
+.vacanciedetail-container .postulated-container .response .user-info button {
+    padding: .5rem 1rem;
+    margin-top: .5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--white);
+    background: var(--first);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.vacanciedetail-container .postulated-container .response .user-info button:hover {
+    border: 1px solid var(--first);
+    background: var(--white);
+    color: var(--first);
+    transition: .2s;
+}
+
+.vacanciedetail-container .postulated-container .response .questions-container {
+    width: 65%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.postulated-container .response .questions-container .answer {
+    margin: .5rem 0 .5rem 1rem;
+    font-weight: 300;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .vacanciedetail-container .postulated-container .response {
+        flex-direction: column;
+    }
+
+    .vacanciedetail-container .postulated-container .response .user-info {
+        width: 100%;
+        min-height: 5rem;
+        height: 5rem;
+    }
+
+    .vacanciedetail-container .postulated-container .response .questions-container {
+        width: 100%;
+        margin-top: .5rem;
+        text-align: center;
+    }
+}

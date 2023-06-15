@@ -62,6 +62,10 @@
   color: var(--white);
 }
 
+.bold {
+  font-weight: 700;
+}
+
 @media (max-width: 800px) {
   #root {
     flex-direction: column;
