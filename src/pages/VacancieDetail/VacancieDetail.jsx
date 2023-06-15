@@ -16,8 +16,6 @@ const VacancieDetail = () => {
     getVacancieById(vacancieId)
       .then((res) => {
         setVacancie(res.data);
-        console.log(res.data.created_by);
-        console.log(userRdxData.user.id);
       })
       .catch((e) => {
         console.log(e);

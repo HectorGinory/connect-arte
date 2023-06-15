@@ -1,8 +1,10 @@
 .jobvacancies-container {
     width: 100%;
     height: 100%;
-    padding-top: 3rem;
+    padding-top: 5rem;
+    box-sizing: border-box;
     overflow: auto;
+    gap: 2rem;
 }
 
 .jobvacancies-container .title-container {
@@ -18,16 +20,86 @@
 
 .jobvacancies-container .vacancies-container {
     width: 90%;
-    border: 1px solid black;
     height: 40rem;
+    gap: 1rem;
+    border-radius: 1rem;
 }
 
 .jobvacancies-container .vacancies-container .filter-vacancies {
     width: 100%;
     height: 10rem;
-    border-bottom: 1px solid black;
+    box-sizing: border-box;
+    padding: 1rem;
+    gap: .5rem;
+}
+.jobvacancies-container .vacancies-container .filter-vacancies .input-criteria {
+    height: 2rem;
+    width: 70%;
+}
+.jobvacancies-container .vacancies-container .filter-vacancies input {
+    width: 100%;
+    border-radius: .5rem;
+}
+.jobvacancies-container .vacancies-container .filter-vacancies .vacancies-map {
+    width: 90%;
+    height: 8rem;
+    background: var(--white);
+    color: var(--first);
+    font-weight: 600;
+    text-align: center;
 }
 
+.jobvacancies-container .vacancies-container .filter-vacancies .vacancies-map .vacancie {
+    border-bottom: 1px solid rgba(57, 1, 102, 0.301);
+    background: linear-gradient(to top, rgb(219, 211, 223), var(--white));
+    padding: .5rem;
+}
+
+
+.jobvacancies-container .vacancies-container .filter-vacancies .vacancies-map .vacancie:hover{
+    background: var(--first);
+    color: var(--white);
+    transition: .3s;
+}
 .jobvacancies-container .vacancies-container .vacancie-detail {
     width: 100%;
+    height: 30rem;
+}
+
+.jobvacancies-container .vacancies-container .vacancie-detail .vacancie-container {
+    width: 90%;
+    height: 90%;
+    background: linear-gradient(-5deg, var(--grey), var(--white));
+    color: var(--first);
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.vacancie-detail .vacancie-container p:first-child {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--darkfirst);
+}
+
+.vacancie-detail .vacancie-container p {
+    margin: .5rem;
+}
+
+.vacancie-detail .vacancie-container button {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 2rem;
+    background: var(--first);
+    color: var(--white);
+    border: 1px solid var(--white);
+    box-shadow: 0 0 0rem var(--first);
+    margin: 1rem .5rem;
+}
+
+.vacancie-detail .vacancie-container button:hover {
+    background: var(--white);
+    color: var(--first);
+    box-shadow: 0 0 .3rem var(--first);
+    transition: .25s;
 }
