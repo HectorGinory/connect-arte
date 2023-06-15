@@ -95,6 +95,7 @@ const EditProfileInfo = () => {
         if(credentials.username !== "") changesRedux.username = credentials.username
         if(credentials.email !== "") changesRedux.email = credentials.email
         if(credentials.rol !== "") changesRedux.rol = credentials.rol
+        if(credentials.interests !== "") changesRedux.interests = res.user.interests
         dispatch(updateUsernameOrEmail(changesRedux))
         navigate("/profile");
       })

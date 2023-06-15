@@ -18,7 +18,7 @@ const Footer = () => {
         console.log(res)
       })
     }
-  }, [])
+  }, [userRdxData.user])
   return (
     <div className="flex f-column align-c footer">
       {!userRdxData.user.name ? (
