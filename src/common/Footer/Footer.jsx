@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Footer.css";
 import { userList } from "../../services/provisionalStuff";
 import { firstToUpperCase } from "../../services/functions";
@@ -8,9 +8,17 @@ import { userData } from "../../pages/userSlice";
 import BtnNavbar from "../ButtonIcon/ButtonIcon";
 import { FaUsers } from "react-icons/fa";
 import { RiLoginCircleLine, RiLogoutCircleLine} from "react-icons/ri";
+import { getUsersByInterests } from "../../services/apiCalls";
 const Footer = () => {
   const users = userList;
   const userRdxData = useSelector(userData);
+  useEffect(()=> {
+    if(userRdxData.user.interests){
+      getUsersByInterests(userRdxData.user.interests.join("|")).then((res)=> {
+        console.log(res)
+      })
+    }
+  }, [])
   return (
     <div className="flex f-column align-c footer">
       {!userRdxData.user.name ? (
@@ -29,7 +37,9 @@ const Footer = () => {
       ) : (
         <div className="searchUsers-container">
           <input type="text" placeholder="Buscar a un usuario" />
-          <div className="usersFiltered"></div>
+          <div className="usersFiltered">
+
+          </div>
         </div>
       )}
     </div>

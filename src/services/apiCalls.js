@@ -29,6 +29,11 @@ export const getUserByUserName = async (username) => {
     const res = await axios.get(`${url}user/${username}`)
     return res.data
 }
+
+export const getUsersByInterests = async (criteria) => {
+    const res = await axios.get(`${url}user/byKeyWords?criteria=${criteria}`)
+    return res.data
+}
 export const editInfoByUserName = async (username, credentials) => {
     const res = await axios.put(`${url}user/info/${username}`, credentials)
     return res.data
