@@ -7,6 +7,24 @@
   overflow: auto;
 }
 
+
+.vacanciedetail-container button {
+  align-self: flex-start;
+  padding: .5rem 1rem;
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  border: .1rem solid var(--darkfirst);
+  background: var(--first);
+  color: var(--white);
+}
+
+.vacanciedetail-container button:hover {
+  background: var(--white);
+  color: var(--first);
+  border: .1rem solid var(--first);
+  transition: .3s;
+}
 .vacanciedetail-container .remove-btn {
 padding: .5rem;
   font-size: 2rem;
