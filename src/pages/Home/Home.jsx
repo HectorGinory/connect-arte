@@ -22,7 +22,6 @@ const Home = () => {
       getVacancies(1, 10, "")
       .then((res) => {
         setVacancies(res.data.data);
-        console.log(res.data)
       })
       .catch((error) => console.log(error));
     }

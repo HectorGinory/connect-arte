@@ -23,10 +23,14 @@
     font-style: italic;
 }
 
+.home-container .vacancies-container {
+    margin: 2rem 0;
+}
 .home-container .vacancie {
     border-left: 3px solid var(--first);
     padding: 1rem;
     background: linear-gradient(to right, rgba(128, 0, 128, 0.089), transparent 10%);
+    margin: 1rem 0;
 }
 
 
@@ -47,4 +51,35 @@
 
 .home-container .vacancie a:hover p:nth-child(2) {
     color: var(--lightfirst);
+}
+
+.home-container .vacancie .btn-navigation {
+    padding: 1rem;
+    background: var(--first);
+    border: 1px solid var(--first);
+    text-align: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    height: 3rem;
+}
+
+.home-container .vacancie .btn-navigation p {
+    color: var(--white);
+    font-size: 1rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.home-container .vacancie .btn-navigation:hover {
+    background: var(--white);
+    box-shadow: 0 0 .3rem var(--first);
+    transition: .3s;
+}
+
+.home-container .vacancie .btn-navigation:hover p {
+    color: var(--first);
+    transition: .3s;
 }
