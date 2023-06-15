@@ -32,6 +32,8 @@ const EditProfileInfo = () => {
     description: "",
     location: "",
     rol: "",
+    interests: "",
+    keyWords: ""
   });
 
   useEffect(() => {
@@ -43,6 +45,7 @@ const EditProfileInfo = () => {
       .then(async (res) => {
         await setUser(res.user);
         await setUserRol(res.user.rol);
+        console.log(res.user)
       })
       .catch((err) => {
         toast.error("Cant get your user info, try again.");
@@ -58,6 +61,9 @@ const EditProfileInfo = () => {
   }, [userRol])
 
   const credentialsHandler = async (e) => {
+    if(e.target.name === "description" && e.target.value.length > 150) {
+      return false
+    }
     await setCredentials((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -137,6 +143,40 @@ const EditProfileInfo = () => {
           handler={credentialsHandler}
           required={true}
           value={credentials.email}
+        />
+      </label>
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
+        <div className="flex f-column justify-c original-info">
+          <p>Coloca una lista de tus interes:</p>
+          {!!user.interests > 0 &&
+            <p>{user.interests.join(", ")}</p>
+          }
+        </div>
+        <InputText
+          type={"text"}
+          className={"input"}
+          placeholder={"Ej.: Arte, pintura, cine,"}
+          name={"interests"}
+          handler={credentialsHandler}
+          required={true}
+          value={credentials.interests}
+        />
+      </label>
+      <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
+        <div className="flex f-column justify-c original-info">
+          <p>Lista de palabras clave para encontrarte:</p>
+          {!!user.keyWords &&
+            <p>{user.keyWords.join(", ")}</p>
+          }
+        </div>
+        <InputText
+          type={"text"}
+          className={"input"}
+          placeholder={"Ej.: Arte, pintura, cine,"}
+          name={"keyWords"}
+          handler={credentialsHandler}
+          required={true}
+          value={credentials.keyWords}
         />
       </label>
       <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">

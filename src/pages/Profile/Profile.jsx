@@ -93,7 +93,7 @@ const Profile = () => {
               {ownerProfile && (
                 <ButtonIcon
                   ReactIcon={FaPencilAlt}
-                  onClick={() => navigate("./editInfo")}
+                  onClick={() => navigate("/profile/editInfo")}
                   text={"Editar Perfil"}
                 ></ButtonIcon>
               )}
@@ -133,7 +133,7 @@ const Profile = () => {
                         {ownerProfile && (
                           <ButtonIcon
                             ReactIcon={FaPencilAlt}
-                            onClick={() => navigate("./EditEducation")}
+                            onClick={() => navigate("/profile/EditEducation")}
                             text={"Añadir educación"}
                           ></ButtonIcon>
                         )}
@@ -179,7 +179,7 @@ const Profile = () => {
                         {ownerProfile && (
                           <ButtonIcon
                             ReactIcon={FaPencilAlt}
-                            onClick={() => navigate("./EditExperience")}
+                            onClick={() => navigate("/profile/EditExperience")}
                             text={"Añadir experiencia"}
                           ></ButtonIcon>
                         )}

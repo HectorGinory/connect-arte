@@ -1,0 +1,50 @@
+.home-container {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 4rem 3rem;
+}
+
+.home-container h1 {
+    font-size: 2.3rem;
+    color: var(--first);
+}
+
+
+.home-container p {
+    font-size: 1.2rem;
+    margin: .5rem;
+}
+
+.home-container p:nth-child(2) {
+    font-size: 1.6rem;
+    color: var(--darkfirst);
+    margin-top: 1rem ;
+    font-style: italic;
+}
+
+.home-container .vacancie {
+    border-left: 3px solid var(--first);
+    padding: 1rem;
+    background: linear-gradient(to right, rgba(128, 0, 128, 0.089), transparent 10%);
+}
+
+
+.home-container .vacancie a {
+    font-style: italic;
+    text-decoration: none;
+}
+.home-container .vacancie p:first-child {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--first);
+}
+
+.home-container .vacancie p:nth-child(2) {
+    color: var(--darkfirst);
+    font-size: 1.2rem;
+}
+
+.home-container .vacancie a:hover p:nth-child(2) {
+    color: var(--lightfirst);
+}
