@@ -45,6 +45,7 @@ const EditEducation = () => {
         userRdxData.token
       )
         .then((res) => {
+          toast.error("Información añadida con éxito");
           navigate("/profile");
         })
         .catch(() => {
@@ -55,6 +56,9 @@ const EditEducation = () => {
 
   useEffect(() => {
     if (!userRdxData.user.name) {
+      navigate("/");
+    } else if(userRdxData.user.rol !== "user") {
+      toast.error("Tu rol debe ser usuario para editar esta información")
       navigate("/");
     }
   }, []);

@@ -46,6 +46,7 @@ const EditEducation = () => {
         userRdxData.token
       )
         .then(() => {
+          toast.error("Información añadida con éxito");
           navigate("/profile");
         })
         .catch(() => {
@@ -53,7 +54,14 @@ const EditEducation = () => {
         });
     }
   };
-
+  useEffect(()=> {
+    if (!userRdxData.user.name) {
+      navigate("/");
+    } else if(userRdxData.user.rol === "company") {
+      toast.error("Tu rol debe ser usuario para editar esta información")
+      navigate("/");
+    }
+},[]);
   return (
     <div className="flex align-c f-column edit-container ">
       <h1>Añade dónde te has formado</h1>

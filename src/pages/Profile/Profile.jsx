@@ -55,7 +55,7 @@ const Profile = () => {
         }
       })
       .catch((err) => {
-        toast.error("Cant get your user info, try again.");
+        toast.error("No ha sido posible acceder");
         navigate("/");
       });
   }, [params]);
