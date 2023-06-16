@@ -35,8 +35,8 @@ export const logInUsers = async (credentials) => {
   return logIn(res.data.token);
 };
 
-export const getUserByUserName = async (username) => {
-  const res = await axios.get(`${url}user/${username}`);
+export const getUserByUserName = async (username, token) => {
+  const res = await axios.get(`${url}user/${username}`, config(token));
   return res.data;
 };
 

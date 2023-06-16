@@ -38,14 +38,13 @@ const Profile = () => {
     }
     let username;
     if (!params.id || params.id === userRdxData.user.username) {
-      console.log(params)
       setOwnerProfile(true);
       username = userRdxData.user.username;
     } else {
       setOwnerProfile(false);
       username = params.id;
     }
-    getUserByUserName(username)
+    getUserByUserName(username, userRdxData.token)
       .then(async (res) => {
         await setUser(res.user);
         if (res.user.rol === "company") {
