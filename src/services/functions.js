@@ -30,6 +30,10 @@ export function credentialsVerify(newInfo) {
     toast.error("Debes rellenar todos los campos");
     return false;
   }
+  if(name.length > 20) {
+    toast.error("El nombre debe tener máximo 20 caracteres");
+    return false;
+  }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     toast.error("Introduzca un email válido");
