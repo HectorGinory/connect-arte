@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
@@ -16,6 +16,7 @@ const NewJobVacancie = () => {
     charge_name: "",
     description: "",
     sector: "",
+    last_day: "",
     location: "",
     question_one: "",
     question_two: "",
@@ -28,6 +29,7 @@ const NewJobVacancie = () => {
       [e.target.name]: e.target.value,
     }));
   };
+  const today = new Date().toISOString().split("T")[0];
 
   const submitInfo = async () => {
     setCredentials((prevState) => ({
@@ -159,7 +161,7 @@ const NewJobVacancie = () => {
         <div className="flex f-column align-c justify-c original-info">
           <p>Fecha máxima para presentarse:</p>
         </div>
-        <input type="date" name="last_day" onChange={(e)=>credentialsHandler(e)}/>
+        <input type="date" name="last_day" onChange={(e)=>credentialsHandler(e)} min={today}/>
       </label>
       </div>
       <div className="flex btn-container">
