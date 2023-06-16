@@ -14,7 +14,7 @@ import "./EditEducation.css";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { toast } from "sonner";
-import { firstToUpperCase } from "../../services/functions";
+import { checkNoInfoEmpty, firstToUpperCase } from "../../services/functions";
 
 const EditEducation = () => {
   const navigate = useNavigate();
@@ -39,17 +39,19 @@ const EditEducation = () => {
   };
 
   const submitInfo = async () => {
-    editEducationByUserName(
-      userRdxData.user.username,
-      credentials,
-      userRdxData.token
-    )
-      .then((res) => {
-        navigate("/profile");
-      })
-      .catch(() => {
-        toast.error("Ups, something go wrong");
-      });
+    if(checkNoInfoEmpty(credentials)){
+      editEducationByUserName(
+        userRdxData.user.username,
+        credentials,
+        userRdxData.token
+      )
+        .then(() => {
+          navigate("/profile");
+        })
+        .catch(() => {
+          toast.error("Ups, something go wrong");
+        });
+    }
   };
 
   return (

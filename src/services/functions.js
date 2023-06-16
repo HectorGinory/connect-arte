@@ -26,33 +26,30 @@ export const convertToBackendFormat = (text) => {
 
 export function credentialsVerify(newInfo) {
   const { email, password, name, username } = newInfo;
-  if (email === "" || password === "" || name === "" || username === "") {
-    toast.error("Debes rellenar todos los campos");
-    return false;
+  if(checkNoInfoEmpty(newInfo)){
+    if (name.length > 20) {
+      toast.error("El nombre debe tener máximo 20 caracteres");
+      return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Introduzca un email válido");
+      return false;
+    }
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
+    if (!passwordRegex.test(password)) {
+      toast.error(
+        "La contraseña debe tener una mayúcula, 6 caracteres y un número"
+      );
+      return false;
+    }
+    if (username.split(" ").length > 1) {
+      toast.error("El nombre de usuario no puede contener espacios");
+      return false;
+    }
+    return true;
   }
-  if(name.length > 20) {
-    toast.error("El nombre debe tener máximo 20 caracteres");
-    return false;
-  }
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    toast.error("Introduzca un email válido");
-    return false;
-  }
-  const passwordRegex = /^(?=.*[A-Z])(?=.*\d).{6,}$/;
-  if (!passwordRegex.test(password)) {
-    toast.error(
-      "La contraseña debe tener una mayúcula, 6 caracteres y un número"
-    );
-    return false;
-  }
-  if (username.split(" ").length > 1) {
-    toast.error(
-      "El nombre de usuario no puede contener espacios"
-    );
-    return false;
-  }
-  return true;
+  return false
 }
 
 export const printDateProfile = (dateString) => {
@@ -85,23 +82,32 @@ export const formatedDate = (stringDate) => {
 
 export const checkEditInfo = (editInfo) => {
   if (editInfo.description.length > 150) {
-    toast.error(
-      "La descripcion debe tener un máximo de 150 caracteres"
-    );
-    return false
+    toast.error("La descripcion debe tener un máximo de 150 caracteres");
+    return false;
   }
   if (editInfo.name.length > 20) {
     toast.error("El nombre debe tener un máximo de 20 caracteres");
-    return false
+    return false;
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if(editInfo.email !== "" && !emailRegex.test(editInfo.email)) {
-    toast.error("El email debe ser un email válido")
-    return false
+  if (editInfo.email !== "" && !emailRegex.test(editInfo.email)) {
+    toast.error("El email debe ser un email válido");
+    return false;
   }
-  if(editInfo.username.split(" ").length > 1) {
-    toast.error("El nombre de usuario no debe tener espacios")
-    return false
+  if (editInfo.username.split(" ").length > 1) {
+    toast.error("El nombre de usuario no debe tener espacios");
+    return false;
   }
-  return true
-}
+  return true;
+};
+
+export const checkNoInfoEmpty = (obj) => {
+  const keys = Object.keys(obj);
+  keys.forEach((key) => {
+    if (obj.key === "") {
+      toast.error("Debes rellenar todos los campos");
+      return false;
+    }
+  });
+  return true;
+};
