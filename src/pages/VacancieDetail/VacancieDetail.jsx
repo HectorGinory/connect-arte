@@ -21,7 +21,6 @@ const VacancieDetail = () => {
     getVacancieById(vacancieId)
       .then((res) => {
         setVacancie(res.data);
-        console.log(res.data)
       })
       .catch((e) => {
         console.log(e);

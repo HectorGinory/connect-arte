@@ -92,8 +92,8 @@ export const getVacancies = async (pageNumber, pageSize, criteria) => {
   return res;
 };
 
-export const getVacancieById = async (id) => {
-  const res = await axios.get(`${url}vacancies/${id}`);
+export const getVacancieById = async (id, token) => {
+  const res = await axios.get(`${url}vacancies/${id}`, config(token));
   return res;
 };
 
