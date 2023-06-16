@@ -18,7 +18,7 @@ const VacancieDetail = () => {
     if (!userRdxData.user.name) {
       navigate("/");
     }
-    getVacancieById(vacancieId)
+    getVacancieById(vacancieId, userRdxData.token)
       .then((res) => {
         setVacancie(res.data);
       })
@@ -28,7 +28,7 @@ const VacancieDetail = () => {
   }, []);
 
   const removeVacancie = () => {
-    removeVacancieById(vacancieId)
+    removeVacancieById(vacancieId, userRdxData.token)
       .then(() => {
         navigate("/profile");
       })
