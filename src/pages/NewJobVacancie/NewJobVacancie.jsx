@@ -34,7 +34,7 @@ const NewJobVacancie = () => {
       ...prevState,
       created_by: userRdxData.user.id,
     }));
-    createVacancie(credentials).then((res) => {
+    createVacancie(credentials, userRdxData.token).then((res) => {
       navigate("/profile")
     }).catch((e) => {
       toast.error("Algo fue mal")

@@ -80,12 +80,12 @@ export const removeExperienceByUserName = async (username, credentials, token) =
   return res.data;
 };
 
-export const createVacancie = async (credentials) => {
-  const res = await axios.post(`${url}vacancies`, credentials);
+export const createVacancie = async (credentials, token) => {
+  const res = await axios.post(`${url}vacancies`, credentials, config(token));
   return res;
 };
 
-export const getVacancies = async (pageNumber, pageSize, criteria, token) => {
+export const getVacancies = async (pageNumber, pageSize, criteria) => {
   const res = await axios.get(
     `${url}vacancies?pageNumber=${pageNumber}&pageSize=${pageSize}&criteria=${criteria}`,
     config(token)
