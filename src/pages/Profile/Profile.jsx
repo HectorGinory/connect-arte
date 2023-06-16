@@ -60,7 +60,7 @@ const Profile = () => {
   }, [params]);
 
   const removeEducation = (education) => {
-    removeEducationByUserName(userRdxData.user.username, education).then(
+    removeEducationByUserName(userRdxData.user.username, education, userRdxData.token).then(
       (res) => {
         setUser(res.user);
       }
@@ -68,7 +68,7 @@ const Profile = () => {
   };
 
   const removeExperience = (experience) => {
-    removeExperienceByUserName(userRdxData.user.username, experience).then(
+    removeExperienceByUserName(userRdxData.user.username, experience, userRdxData.token).then(
       (res) => {
         setUser(res.user);
       }

@@ -40,12 +40,12 @@ export const getUserByUserName = async (username, token) => {
   return res.data;
 };
 
-export const getUsersByInterests = async (criteria) => {
-  const res = await axios.get(`${url}user/byKeyWords?criteria=${criteria}`);
+export const getUsersByInterests = async (criteria, token) => {
+  const res = await axios.get(`${url}user/byKeyWords?criteria=${criteria}`, config(token));
   return res.data;
 };
-export const getUsersByRegExp = async (criteria) => {
-  const res = await axios.get(`${url}user/regExp/${criteria}`);
+export const getUsersByRegExp = async (criteria, token) => {
+  const res = await axios.get(`${url}user/regExp/${criteria}`, config(token));
   return res.data;
 };
 export const editInfoByUserName = async (username, credentials, token) => {
@@ -56,26 +56,26 @@ export const editInfoByUserName = async (username, credentials, token) => {
   );
   return res.data;
 };
-export const editEducationByUserName = async (username, credentials) => {
-  const res = await axios.put(`${url}user/education/${username}`, credentials);
+export const editEducationByUserName = async (username, credentials, token) => {
+  const res = await axios.put(`${url}user/education/${username}`, credentials, config(token));
   return res.data;
 };
-export const removeEducationByUserName = async (username, credentials) => {
+export const removeEducationByUserName = async (username, credentials, token) => {
   const res = await axios.post(
     `${url}user/educationDelete/${username}`,
-    credentials
+    credentials, config(token)
   );
   return res.data;
 };
 
-export const editExperienceByUserName = async (username, credentials) => {
-  const res = await axios.put(`${url}user/experience/${username}`, credentials);
+export const editExperienceByUserName = async (username, credentials, token) => {
+  const res = await axios.put(`${url}user/experience/${username}`, credentials, config(token));
   return res.data;
 };
-export const removeExperienceByUserName = async (username, credentials) => {
+export const removeExperienceByUserName = async (username, credentials, token) => {
   const res = await axios.post(
     `${url}user/experienceDelete/${username}`,
-    credentials
+    credentials, config(token)
   );
   return res.data;
 };
