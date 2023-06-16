@@ -42,7 +42,7 @@ const EditProfileInfo = () => {
       const countriesName = res.map((res) => res.name.common.toLowerCase());
       setCountries(countriesName);
     });
-    getUserByUserName(userRdxData.user.username)
+    getUserByUserName(userRdxData.user.username, userRdxData.token)
       .then(async (res) => {
         await setUser(res.user);
         await setUserRol(res.user.rol);

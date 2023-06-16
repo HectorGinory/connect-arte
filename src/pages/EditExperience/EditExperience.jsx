@@ -22,7 +22,6 @@ const EditEducation = () => {
   const navigate = useNavigate();
   const userRdxData = useSelector(userData);
 
-  const [user, setUser] = useState({});
   const [credentials, setCredentials] = useState({
     position: "",
     company: "",
@@ -31,16 +30,6 @@ const EditEducation = () => {
     date_end: "",
     description: ""
   });
-  useEffect(() => {
-    getUserByUserName(userRdxData.user.username)
-      .then(async (res) => {
-        await setUser(res.user);
-      })
-      .catch((err) => {
-        toast.error("Cant get your user info, try again.");
-        navigate("/");
-      });
-  }, []);
 
   const credentialsHandler = async (e) => {
     await setCredentials((prevState) => ({
@@ -49,9 +38,8 @@ const EditEducation = () => {
     }));
   };
 
-
   const submitInfo = async () => {
-    editExperienceByUserName(userRdxData.user.username, credentials)
+    editExperienceByUserName(userRdxData.user.username, credentials, userRdxData.token)
       .then((res) => {
         navigate("/profile");
       })

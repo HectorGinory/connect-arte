@@ -38,7 +38,7 @@ const EditEducation = () => {
 
 
   const submitInfo = async () => {
-    editEducationByUserName(userRdxData.user.username, credentials)
+    editEducationByUserName(userRdxData.user.username, credentials, userRdxData.token)
       .then((res) => {
         navigate("/profile");
       })

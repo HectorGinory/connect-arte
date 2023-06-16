@@ -27,7 +27,7 @@ const Footer = () => {
     } else {
       criteria = "";
     }
-    getUsersByInterests(criteria)
+    getUsersByInterests(criteria, userRdxData.token)
       .then((res) => {
         setUsersRecommended(res.users);
       })
@@ -43,16 +43,15 @@ const Footer = () => {
   useEffect(() => {
     if(criteria !== "") {
       const bringUsers = setTimeout(() => {
-        getUsersByRegExp(criteria)
+        getUsersByRegExp(criteria, userRdxData.token)
           .then((res) => {
-            console.log(res)
             setUsersRecommended(res.user);
           })
           .catch((error) => console.log(error));
       }, 375);
       return () => clearTimeout(bringUsers);
     } else {
-      getUsersByInterests(criteria)
+      getUsersByInterests(criteria, userRdxData.token)
       .then((res) => {
         setUsersRecommended(res.users);
       })
