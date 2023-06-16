@@ -87,8 +87,7 @@ export const createVacancie = async (credentials, token) => {
 
 export const getVacancies = async (pageNumber, pageSize, criteria) => {
   const res = await axios.get(
-    `${url}vacancies?pageNumber=${pageNumber}&pageSize=${pageSize}&criteria=${criteria}`,
-    config(token)
+    `${url}vacancies?pageNumber=${pageNumber}&pageSize=${pageSize}&criteria=${criteria}`
   );
   return res;
 };

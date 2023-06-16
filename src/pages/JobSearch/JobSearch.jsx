@@ -24,6 +24,8 @@ const JobSearch = () => {
     }
     getVacancies(actualPage, 10, criteria).then((res) => {
       setVacancies(res.data.data);
+    }).catch((e)=>{
+      navigate("/")
     });
   }, [actualPage]);
 
@@ -44,7 +46,9 @@ const JobSearch = () => {
   }, [criteria, actualPage]);
 
   return (
-    <div className="flex f-column align-c jobvacancies-container ">
+    <>
+          {vacancies.length > 0 ?
+      <div className="flex f-column align-c jobvacancies-container ">
       <div className="flex align-c justify-sb title-container">
         <h1>Ofertas de empleo</h1>
         {userRdxData.user.rol === "company" && (
@@ -129,7 +133,11 @@ const JobSearch = () => {
           )}
         </div>
       </div>
-    </div>
+    </div>:
+    <>
+      <Spinner/>
+    </>}
+    </>
   );
 };
 
