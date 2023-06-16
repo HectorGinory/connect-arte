@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Footer.css";
 import { userList } from "../../services/provisionalStuff";
 import { firstToUpperCase } from "../../services/functions";
@@ -7,18 +7,29 @@ import { useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
 import BtnNavbar from "../ButtonIcon/ButtonIcon";
 import { FaUsers } from "react-icons/fa";
-import { RiLoginCircleLine, RiLogoutCircleLine} from "react-icons/ri";
+import { RiLoginCircleLine, RiLogoutCircleLine } from "react-icons/ri";
 import { getUsersByInterests } from "../../services/apiCalls";
+import { useNavigate } from "react-router-dom";
 const Footer = () => {
-  const users = userList;
+  const navigate = useNavigate();
   const userRdxData = useSelector(userData);
-  useEffect(()=> {
-    if(userRdxData.user.interests){
-      getUsersByInterests(userRdxData.user.interests.join("|")).then((res)=> {
-        console.log(res)
-      })
+  const [usersRecommended, setUsersRecommended] = useState([]);
+  useEffect(() => {
+    let criteria;
+    if (userRdxData.user.interests) {
+      criteria = userRdxData.user.interests.join("|");
+    } else {
+      criteria = "";
     }
-  }, [userRdxData.user])
+    getUsersByInterests(criteria)
+      .then((res) => {
+        setUsersRecommended(res.users);
+        console.log();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [userRdxData.user]);
   return (
     <div className="flex f-column align-c footer">
       {!userRdxData.user.name ? (
@@ -35,10 +46,23 @@ const Footer = () => {
           ></BtnNavbar>
         </>
       ) : (
-        <div className="searchUsers-container">
+        <div className="flex f-column align-c searchUsers-container">
+          <p>Busca a otros usuarios</p>
           <input type="text" placeholder="Buscar a un usuario" />
           <div className="usersFiltered">
-
+            {usersRecommended.length !== 0 &&
+              usersRecommended.map((user, index) => {
+                return (
+                  <div
+                    className="flex align-c f-column user-container"
+                    key={index}
+                    onClick={() => navigate(`/user/${user.username}`)}
+                  >
+                    <p>{user.name}</p>
+                    <p>{user.username}</p>
+                  </div>
+                );
+              })}
           </div>
         </div>
       )}

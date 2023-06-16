@@ -5,19 +5,63 @@
   box-shadow: 0 0 0.3rem var(--first),
     inset -0.1rem -0.1rem 0.2rem rgba(0, 0, 0, 0.164),
     inset 0.1rem 0.1rem 0.2rem rgba(255, 255, 255, 0.356);
-    z-index: 999;
+  z-index: 999;
+  box-sizing: border-box;
+  padding: 2rem;
+  color: var(--white);
 }
 
-@media (max-width:900px) {
-    .footer {
-        display: none;
-    }
+.footer .searchUsers-container {
+    width: 100%;
+}
+.footer .searchUsers-container input {
+    width: 90%;
+    border-radius: 2rem;
+    text-align: center;
+    height: 2rem;
+}
+
+.footer .searchUsers-container .usersFiltered {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.footer .searchUsers-container .usersFiltered .user-container {
+    width: 90%;
+    background: var(--white);
+    margin: 1rem 0;
+    border-radius: 2rem;
+    padding: .5rem;
+    color: var(--first);
+}
+
+.footer .searchUsers-container .usersFiltered .user-container:hover {
+    width: 95%;
+    background: var(--first);
+    margin: .8rem 0;
+    padding: .7rem;
+    color: var(--white);
+    transition: .4s;
+    border: 1px solid var(--white);
+}
+.footer .searchUsers-container .usersFiltered .user-container p {
+    font-weight: 600;
+}
+
+.footer .searchUsers-container .usersFiltered .user-container p:nth-child(2) {
+    font-weight: 400;
+    font-style: italic;
+}
+@media (max-width: 900px) {
+  .footer {
+    display: none;
+  }
 }
 
 @media (max-width: 800px) {
-    .footer{
-        height:  8rem;
-        display: flex;
-        width:100%;
-    }
+  .footer {
+    height: 8rem;
+    display: flex;
+    width: 100%;
+  }
 }

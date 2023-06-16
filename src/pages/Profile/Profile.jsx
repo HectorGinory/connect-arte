@@ -25,7 +25,6 @@ import ButtonIcon from "../../common/ButtonIcon/ButtonIcon";
 import Spinner from "../../common/Spinner/Spinner";
 
 const Profile = () => {
-  const location = useLocation();
   const params = useParams();
   const [ownerProfile, setOwnerProfile] = useState(false);
   const [jobVacancies, setJobVacancies] = useState([]);
@@ -38,12 +37,13 @@ const Profile = () => {
       navigate("/");
     }
     let username;
-    if (!params.username || params.username === userRdxData.user.username) {
+    if (!params.id || params.id === userRdxData.user.username) {
+      console.log(params)
       setOwnerProfile(true);
       username = userRdxData.user.username;
     } else {
       setOwnerProfile(false);
-      username = params.username;
+      username = params.id;
     }
     getUserByUserName(username)
       .then(async (res) => {
@@ -58,7 +58,7 @@ const Profile = () => {
         toast.error("Cant get your user info, try again.");
         navigate("/");
       });
-  }, []);
+  }, [params]);
 
   const removeEducation = (education) => {
     removeEducationByUserName(userRdxData.user.username, education).then(

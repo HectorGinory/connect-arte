@@ -43,9 +43,9 @@
 }
 
 .profile-text .generalInfo-container {
-    box-shadow: 0 .1rem rgba(0, 0, 0, 0.185);
     padding: 0 3%;
     box-sizing: border-box;
+    margin-bottom: 1rem;
 }
 .profile-text .user-info h1 {
     font-size: 1.5rem;
