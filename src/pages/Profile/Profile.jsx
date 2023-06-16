@@ -49,7 +49,7 @@ const Profile = () => {
       .then(async (res) => {
         await setUser(res.user);
         if (res.user.rol === "company") {
-          getJobVacanciesByUserId(res.user._id).then((res) => {
+          getJobVacanciesByUserId(res.user._id, userRdxData.token).then((res) => {
             setJobVacancies(res.data);
           });
         }

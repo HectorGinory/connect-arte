@@ -106,8 +106,8 @@ export const removeVacancieById = async (id, token) => {
   const res = await axios.delete(`${url}vacancies/delete/${id}`, config(token));
   return res;
 };
-export const getJobVacanciesByUserId = async (userId) => {
-  const res = await axios.get(`${url}vacancies/user/${userId}`);
+export const getJobVacanciesByUserId = async (userId, token) => {
+  const res = await axios.get(`${url}vacancies/user/${userId}`, config(token));
   return res;
 };
 

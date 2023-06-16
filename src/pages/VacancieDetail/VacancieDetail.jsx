@@ -28,13 +28,15 @@ const VacancieDetail = () => {
   }, []);
 
   const removeVacancie = () => {
-    removeVacancieById(vacancieId, userRdxData.token)
+    if(userRdxData.user.id === vacancie.created_by){
+      removeVacancieById(vacancieId, userRdxData.token)
       .then(() => {
         navigate("/profile");
       })
       .catch((e) => {
         console.log(e);
       });
+    }
   };
   return (
     <>
