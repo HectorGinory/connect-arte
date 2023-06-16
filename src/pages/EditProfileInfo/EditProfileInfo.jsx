@@ -14,7 +14,7 @@ import "./EditProfileInfo.css";
 import { InputText } from "../../common/InputText/InputText";
 import { FaUsers, FaUser} from 'react-icons/fa'
 import { toast } from "sonner";
-import { firstToUpperCase } from "../../services/functions";
+import { checkEditInfo, firstToUpperCase } from "../../services/functions";
 
 const EditProfileInfo = () => {
   const navigate = useNavigate();
@@ -45,7 +45,6 @@ const EditProfileInfo = () => {
       .then(async (res) => {
         await setUser(res.user);
         await setUserRol(res.user.rol);
-        console.log(res.user)
       })
       .catch((err) => {
         toast.error("Cant get your user info, try again.");
@@ -62,6 +61,9 @@ const EditProfileInfo = () => {
 
   const credentialsHandler = async (e) => {
     if(e.target.name === "description" && e.target.value.length > 150) {
+      return false
+    }
+    if(e.target.name === "name" && e.target.value.length > 20) {
       return false
     }
     await setCredentials((prevState) => ({
@@ -81,15 +83,8 @@ const EditProfileInfo = () => {
   };
 
   const submitInfo = async () => {
-    if (credentials.description.length > 150) {
-      return toast.error(
-        "La descripcion debe tener un máximo de 150 caracteres"
-      );
-    }
-    if (credentials.name.length > 20) {
-      return toast.error("El nombre debe tener un máximo de 20 caracteres");
-    }
-    editInfoByUserName(userRdxData.user.username, credentials)
+    if(checkEditInfo(credentials)) {
+      editInfoByUserName(userRdxData.user.username, credentials)
       .then((res) => {
         const changesRedux = {}
         if(credentials.username !== "") changesRedux.username = credentials.username
@@ -102,6 +97,7 @@ const EditProfileInfo = () => {
       .catch(() => {
         toast.error("Ups, something go wrong");
       });
+    }
   };
 
   const changerol = async () => {

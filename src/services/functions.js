@@ -73,3 +73,25 @@ export const formatedDate = (stringDate) => {
   return `${formattedDate}`;
 };
 
+export const checkEditInfo = (editInfo) => {
+  if (editInfo.description.length > 150) {
+    toast.error(
+      "La descripcion debe tener un máximo de 150 caracteres"
+    );
+    return false
+  }
+  if (editInfo.name.length > 20) {
+    toast.error("El nombre debe tener un máximo de 20 caracteres");
+    return false
+  }
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(editInfo.email !== "" && !emailRegex.test(editInfo.email).editInfo) {
+    toast.error("El email debe ser un email válido")
+    return false
+  }
+  if(editInfo.username.split(" ").length > 1) {
+    toast.error("El nombre de usuario no debe tener espacios")
+    return false
+  }
+  return true
+}
