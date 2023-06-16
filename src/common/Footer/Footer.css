@@ -63,5 +63,24 @@
     height: 8rem;
     display: flex;
     width: 100%;
+    padding: .5rem;
+  }
+  
+  .footer .searchUsers-container input {
+    height: 1.5rem;
+  } 
+
+  .footer .searchUsers-container .usersFiltered {
+    margin-top: .5rem;
+    display: flex;
+    gap: 0.5rem;
+    overflow: scroll;
+    width: 90%;
+  }
+
+  .footer .searchUsers-container .usersFiltered .user-container {
+    margin: 0;
+    min-width: 10rem;
+    font-size: .8rem;
   }
 }
