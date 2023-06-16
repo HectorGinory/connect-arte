@@ -85,9 +85,10 @@ export const createVacancie = async (credentials) => {
   return res;
 };
 
-export const getVacancies = async (pageNumber, pageSize, criteria) => {
+export const getVacancies = async (pageNumber, pageSize, criteria, token) => {
   const res = await axios.get(
-    `${url}vacancies?pageNumber=${pageNumber}&pageSize=${pageSize}&criteria=${criteria}`
+    `${url}vacancies?pageNumber=${pageNumber}&pageSize=${pageSize}&criteria=${criteria}`,
+    config(token)
   );
   return res;
 };
@@ -97,8 +98,8 @@ export const getVacancieById = async (id, token) => {
   return res;
 };
 
-export const applyVacancie = async (id, credentials) => {
-  const res = await axios.post(`${url}vacancies/apply/${id}`, credentials);
+export const applyVacancie = async (id, credentials, token) => {
+  const res = await axios.post(`${url}vacancies/apply/${id}`, credentials, config(token));
   return res;
 };
 export const removeVacancieById = async (id) => {

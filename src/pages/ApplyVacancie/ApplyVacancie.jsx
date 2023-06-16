@@ -9,8 +9,9 @@ import {
   getUserByUserName,
   getVacancieById,
 } from "../../services/apiCalls";
+import { AllQuestionsAnswer } from "../../services/functions";
 import { userData } from "../userSlice";
-import './ApplyVacancie.css'
+import "./ApplyVacancie.css";
 
 const ApplyVacancie = () => {
   const navigate = useNavigate();
@@ -34,14 +35,13 @@ const ApplyVacancie = () => {
   useEffect(() => {
     if (!userRdxData.user.name) {
       navigate("/");
-    } else if(userRdxData.user.rol !== "user") {
-      toast.error("Tu rol debe ser usuario para aplicar a un empleo")
+    } else if (userRdxData.user.rol !== "user") {
+      toast.error("Tu rol debe ser usuario para aplicar a un empleo");
       navigate("/");
     }
-    getVacancieById(vacancieId).then((res) => {
+    getVacancieById(vacancieId, userRdxData.token).then((res) => {
       setVacancie(res.data);
     });
-    getUserByUserName(userRdxData.user.username).then((res) => {});
   }, []);
 
   useEffect(() => {
@@ -53,13 +53,15 @@ const ApplyVacancie = () => {
   }, [userRdxData]);
 
   const submitInfo = async () => {
-    applyVacancie(vacancieId, credentials)
-      .then((res) => {
-        navigate("/profile");
-      })
-      .catch((e) => {
-        toast.error("Algo fue mal");
-      });
+    if (AllQuestionsAnswer(vacancie, credentials)) {
+      applyVacancie(vacancieId, credentials, userRdxData.token)
+        .then(() => {
+          navigate("/profile");
+        })
+        .catch((e) => {
+          toast.error("Algo fue mal");
+        });
+    }
   };
   return (
     <div className="flex align-c f-column vacancie-apply-container">

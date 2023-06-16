@@ -26,7 +26,7 @@ export const convertToBackendFormat = (text) => {
 
 export function credentialsVerify(newInfo) {
   const { email, password, name, username } = newInfo;
-  if(checkNoInfoEmpty(newInfo)){
+  if (checkNoInfoEmpty(newInfo)) {
     if (name.length > 20) {
       toast.error("El nombre debe tener máximo 20 caracteres");
       return false;
@@ -49,7 +49,7 @@ export function credentialsVerify(newInfo) {
     }
     return true;
   }
-  return false
+  return false;
 }
 
 export const printDateProfile = (dateString) => {
@@ -109,5 +109,17 @@ export const checkNoInfoEmpty = (obj) => {
       return false;
     }
   });
+  return true;
+};
+
+export const AllQuestionsAnswer = (vacancie, answers) => {
+  if (
+    (!!vacancie.question_one && answers.answer_one === "") ||
+    (!!vacancie.question_one && answers.answer_one === "") ||
+    (!!vacancie.question_one && answers.answer_one === "")
+  ) {
+    toast.error("Debes responder a todas las preguntas");
+    return false;
+  }
   return true;
 };

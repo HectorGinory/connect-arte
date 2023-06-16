@@ -22,7 +22,7 @@ const JobSearch = () => {
     if(!userRdxData.user.name) {
       navigate("/")
     }
-    getVacancies(actualPage, 10, criteria).then((res) => {
+    getVacancies(actualPage, 10, criteria, userRdxData.token).then((res) => {
       setVacancies(res.data.data);
     });
   }, [actualPage]);
