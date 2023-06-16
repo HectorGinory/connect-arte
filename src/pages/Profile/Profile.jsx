@@ -32,6 +32,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState();
 
+
   useEffect(() => {
     if (!userRdxData.user.name) {
       navigate("/");

@@ -10,7 +10,7 @@ import {
 } from "../../services/apiCalls";
 
 import { InputText } from "../../common/InputText/InputText";
-import './EditEducation.css'
+import "./EditEducation.css";
 import ReactCrop from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { toast } from "sonner";
@@ -20,13 +20,15 @@ const EditEducation = () => {
   const navigate = useNavigate();
   const userRdxData = useSelector(userData);
 
+  const today = new Date().toISOString().split("T")[0];
+
   const [credentials, setCredentials] = useState({
     school: "",
     title: "",
     discipline: "",
     date_start: "",
     date_end: "",
-    description: ""
+    description: "",
   });
 
   const credentialsHandler = async (e) => {
@@ -36,9 +38,12 @@ const EditEducation = () => {
     }));
   };
 
-
   const submitInfo = async () => {
-    editEducationByUserName(userRdxData.user.username, credentials, userRdxData.token)
+    editEducationByUserName(
+      userRdxData.user.username,
+      credentials,
+      userRdxData.token
+    )
       .then((res) => {
         navigate("/profile");
       })
@@ -93,33 +98,46 @@ const EditEducation = () => {
         />
       </label>
       <div className="flex align-c justify-sb date-label-container">
-      <label className="flex f-column justify-c align-c date-label purpleGradient-box">
-        <div className="flex f-column justify-c align-c original-info">
-          <p>Fecha de incio:</p>
-        </div>
-        <input type="date" name="date_start" onChange={(e)=>credentialsHandler(e)}/>
-      </label>
-      <label className="flex f-column justify-c align-c date-label purpleGradient-box">
-        <div className="flex f-column justify-c align-c original-info">
-          <p>Fecha de fin:</p>
-        </div>
-        <input type="date" name="date_end" onChange={(e)=>credentialsHandler(e)}/>
-      </label>
+        <label className="flex f-column justify-c align-c date-label purpleGradient-box">
+          <div className="flex f-column justify-c align-c original-info">
+            <p>Fecha de incio:</p>
+          </div>
+          <input
+            type="date"
+            name="date_start"
+            onChange={(e) => credentialsHandler(e)}
+            max={today}
+          />
+        </label>
+        <label className="flex f-column justify-c align-c date-label purpleGradient-box">
+          <div className="flex f-column justify-c align-c original-info">
+            <p>Fecha de fin:</p>
+          </div>
+          {credentials.date_start !== "" && (
+            <input
+              type="date"
+              name="date_end"
+              min={new Date(credentials.date_start).toISOString().split("T")[0]}
+              onChange={(e) => credentialsHandler(e)}
+              max={today}
+            />
+          )}
+        </label>
       </div>
       <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Descripcion de la educación:</p>
         </div>
         <textarea
-              type="text"
-              className="input-textarea"
-              placeholder="E.: Baile contemporáneo, ..."
-              name="description"
-              onChange={(e) => credentialsHandler(e)}
-              required
-              value={credentials.description}
-              style={{width: 95 + '%'}}
-            />
+          type="text"
+          className="input-textarea"
+          placeholder="E.: Baile contemporáneo, ..."
+          name="description"
+          onChange={(e) => credentialsHandler(e)}
+          required
+          value={credentials.description}
+          style={{ width: 95 + "%" }}
+        />
       </label>
       <div className="flex align-c justify-c btn-container">
         <button onClick={() => submitInfo()} className="btn">
