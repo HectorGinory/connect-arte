@@ -8,12 +8,18 @@ import { userData } from "../../pages/userSlice";
 import BtnNavbar from "../ButtonIcon/ButtonIcon";
 import { FaUsers } from "react-icons/fa";
 import { RiLoginCircleLine, RiLogoutCircleLine } from "react-icons/ri";
-import { getUsersByInterests } from "../../services/apiCalls";
+import {
+  getUsersByInterests,
+  getUsersByRegExp,
+  getVacancies,
+} from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 const Footer = () => {
   const navigate = useNavigate();
   const userRdxData = useSelector(userData);
   const [usersRecommended, setUsersRecommended] = useState([]);
+  const [criteria, setCriteria] = useState("");
+
   useEffect(() => {
     let criteria;
     if (userRdxData.user.interests) {
@@ -24,12 +30,38 @@ const Footer = () => {
     getUsersByInterests(criteria)
       .then((res) => {
         setUsersRecommended(res.users);
-        console.log();
       })
       .catch((e) => {
         console.log(e);
       });
   }, [userRdxData.user]);
+
+  const criteriaHandler = (e) => {
+    setCriteria(e.target.value);
+  };
+
+  useEffect(() => {
+    if(criteria !== "") {
+      const bringUsers = setTimeout(() => {
+        getUsersByRegExp(criteria)
+          .then((res) => {
+            console.log(res)
+            setUsersRecommended(res.user);
+          })
+          .catch((error) => console.log(error));
+      }, 375);
+      return () => clearTimeout(bringUsers);
+    } else {
+      getUsersByInterests(criteria)
+      .then((res) => {
+        setUsersRecommended(res.users);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+    }
+  }, [criteria]);
+
   return (
     <div className="flex f-column align-c footer">
       {!userRdxData.user.name ? (
@@ -48,7 +80,12 @@ const Footer = () => {
       ) : (
         <div className="flex f-column align-c searchUsers-container">
           <p>Busca a otros usuarios</p>
-          <input type="text" placeholder="Buscar a un usuario" />
+          <input
+            type="text"
+            placeholder="Buscar a un usuario"
+            onChange={(e) => criteriaHandler(e)}
+            name="criteria"
+          />
           <div className="usersFiltered">
             {usersRecommended.length !== 0 &&
               usersRecommended.map((user, index) => {

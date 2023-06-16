@@ -74,6 +74,7 @@
     margin-top: .5rem;
     display: flex;
     gap: 0.5rem;
+    flex-direction: row;
     overflow: scroll;
     width: 90%;
   }
@@ -82,5 +83,16 @@
     margin: 0;
     min-width: 10rem;
     font-size: .8rem;
+  }
+
+  .footer .searchUsers-container .usersFiltered .user-container:hover {
+    width: 10rem;
+    background: var(--first);
+    margin: 0 0;
+    padding: 0;
+    color: var(--white);
+    transition: .4s;
+    border: 1px solid var(--white);
+    justify-content: center;
   }
 }
