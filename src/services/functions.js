@@ -85,7 +85,7 @@ export const checkEditInfo = (editInfo) => {
     return false
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if(editInfo.email !== "" && !emailRegex.test(editInfo.email).editInfo) {
+  if(editInfo.email !== "" && !emailRegex.test(editInfo.email)) {
     toast.error("El email debe ser un email válido")
     return false
   }

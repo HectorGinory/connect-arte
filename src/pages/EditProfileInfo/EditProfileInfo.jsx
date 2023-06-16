@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { login, updateUsernameOrEmail, userData } from "../userSlice";
+import { login, updateToken, updateUserRdx, userData } from "../userSlice";
 import { useState } from "react";
 import { useEffect } from "react";
 import {
@@ -9,6 +9,7 @@ import {
   getContriesList,
   getUserByUserName,
 } from "../../services/apiCalls";
+import jwt_decode from 'jwt-decode';
 
 import "./EditProfileInfo.css";
 import { InputText } from "../../common/InputText/InputText";
@@ -84,14 +85,11 @@ const EditProfileInfo = () => {
 
   const submitInfo = async () => {
     if(checkEditInfo(credentials)) {
-      editInfoByUserName(userRdxData.user.username, credentials)
+      editInfoByUserName(userRdxData.user.username, credentials, userRdxData.token)
       .then((res) => {
-        const changesRedux = {}
-        if(credentials.username !== "") changesRedux.username = credentials.username
-        if(credentials.email !== "") changesRedux.email = credentials.email
-        if(credentials.rol !== "") changesRedux.rol = credentials.rol
-        if(credentials.interests !== "") changesRedux.interests = res.user.interests
-        dispatch(updateUsernameOrEmail(changesRedux))
+        const user = jwt_decode(res.token)
+        dispatch(updateUserRdx(user))
+        dispatch(login(res))
         navigate("/profile");
       })
       .catch(() => {
