@@ -15,6 +15,9 @@ const VacancieDetail = () => {
   const [vacancie, setVacancie] = useState({});
 
   useState(() => {
+    if (!userRdxData.user.name) {
+      navigate("/");
+    }
     getVacancieById(vacancieId)
       .then((res) => {
         setVacancie(res.data);

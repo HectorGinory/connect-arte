@@ -32,6 +32,12 @@ const ApplyVacancie = () => {
   };
 
   useEffect(() => {
+    if (!userRdxData.user.name) {
+      navigate("/");
+    } else if(userRdxData.user.rol !== "user") {
+      toast.error("Tu rol debe ser usuario para aplicar a un empleo")
+      navigate("/");
+    }
     getVacancieById(vacancieId).then((res) => {
       setVacancie(res.data);
     });

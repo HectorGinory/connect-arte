@@ -40,6 +40,14 @@ const NewJobVacancie = () => {
       toast.error("Algo fue mal")
     })
   };
+  useEffect(() => {
+    if (!userRdxData.user.name) {
+      navigate("/");
+    } else if(userRdxData.user.rol === "user") {
+      toast.error("Tu rol debe ser empresa para crear un empleo")
+      navigate("/");
+    }
+  }, []);
 
   return (
     <div className="flex align-c f-column edit-container">

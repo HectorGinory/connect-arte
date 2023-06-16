@@ -19,6 +19,9 @@ const JobSearch = () => {
   const [totalPage, setTotalPage] = useState()
 
   useEffect(() => {
+    if(!userRdxData.user.name) {
+      navigate("/")
+    }
     getVacancies(actualPage, 10, criteria).then((res) => {
       setVacancies(res.data.data);
     });
