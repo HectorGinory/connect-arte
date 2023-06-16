@@ -28,7 +28,10 @@
 .menu-container {
     gap: 1.5rem;
 }
-
+.extra-btns {
+    gap: 1.5rem;
+    display: none;
+}
 .navigation-container .hamburguer-container {
     display: none;
 }
@@ -123,7 +126,12 @@
         display: none;
     }
 }
-
+@media (max-width: 900px) {
+    .extra-btns {
+        gap: 1.5rem;
+        display: flex;
+    }
+}
 @media (max-width:800px) {
     .navbar-container {
         flex-direction: row;
@@ -138,6 +146,11 @@
         font-size: 1.4rem;
     }
     .title span {
+        display: none;
+    }
+
+    .extra-btns {
+        gap: 1.5rem;
         display: none;
     }
 

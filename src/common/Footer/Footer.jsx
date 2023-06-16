@@ -65,7 +65,7 @@ const Footer = () => {
   return (
     <div className="flex f-column align-c footer">
       {!userRdxData.user.name ? (
-        <>
+        <div className="flex f-column align-c justify-c btn-footer">
           <BtnNavbar
             ReactIcon={FaUsers}
             text={"Register"}
@@ -76,7 +76,7 @@ const Footer = () => {
             text={"Login"}
             path={"login"}
           ></BtnNavbar>
-        </>
+        </div>
       ) : (
         <div className="flex f-column align-c searchUsers-container">
           <p>Busca a otros usuarios</p>

@@ -9,15 +9,15 @@ import { BsBell } from "react-icons/bs";
 import { CgProfile } from "react-icons/cg";
 import { FaUsers } from "react-icons/fa";
 import { MdWork } from "react-icons/md";
-import { RiLoginCircleLine, RiLogoutCircleLine} from "react-icons/ri";
+import { RiLoginCircleLine, RiLogoutCircleLine } from "react-icons/ri";
 import profilePicture from "../../assets/profile-picture.png";
 import ButtonIcon from "../ButtonIcon/ButtonIcon";
 import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const userRdxData = useSelector(userData);
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
     <div className="flex align-c f-column side-nav navbar-container">
       <div className="flex align-c title">
@@ -38,21 +38,11 @@ const Navbar = () => {
                 text={"Inicio"}
                 path={""}
               ></ButtonIcon>
-              {/* <ButtonIcon
-                ReactIcon={FiHash}
-                text={"Descubre"}
-                path={""}
-              ></ButtonIcon> */}
               <ButtonIcon
                 ReactIcon={MdWork}
                 text={"Ofertas"}
                 path={"jobsearch"}
               ></ButtonIcon>
-              {/* <ButtonIcon
-                ReactIcon={BiMessageAltCheck}
-                text={"Mensajes"}
-                path={""}
-              ></ButtonIcon> */}
               <ButtonIcon
                 ReactIcon={CgProfile}
                 text={"Perfil"}
@@ -61,15 +51,21 @@ const Navbar = () => {
               <ButtonIcon
                 ReactIcon={RiLogoutCircleLine}
                 text={"Logout"}
-				onClick={()=> {
-          dispatch(logout())
-          navigate("/")
-        }}
+                onClick={() => {
+                  dispatch(logout());
+                  navigate("/");
+                }}
               ></ButtonIcon>
             </>
           ) : (
             <>
-			<ButtonIcon
+              <ButtonIcon
+                ReactIcon={FiHash}
+                text={"Descubre"}
+                path={""}
+              ></ButtonIcon>
+              <div className="flex f-column extra-btns">
+              <ButtonIcon
                 ReactIcon={FaUsers}
                 text={"Register"}
                 path={"register"}
@@ -79,25 +75,24 @@ const Navbar = () => {
                 text={"Login"}
                 path={"login"}
               ></ButtonIcon>
-			</>
+              </div>
+            </>
           )}
         </div>
       </div>
-	  {userRdxData.user.name && (
-      <div className="flex align-c justify-c profile-navigation">
-        <div className="image-container">
-          <img src={profilePicture} className="img" />
-        </div>
-        <div className="flex f-column justify-c username-container">
+      {userRdxData.user.name && (
+        <div className="flex align-c justify-c profile-navigation">
+          <div className="image-container">
+            <img src={profilePicture} className="img" />
+          </div>
+          <div className="flex f-column justify-c username-container">
             <>
-              <p>
-                {firstToUpperCase(userRdxData.user.name)}
-              </p>
+              <p>{firstToUpperCase(userRdxData.user.name)}</p>
               <p>{"@" + firstToUpperCase(userRdxData.user.username)}</p>
             </>
+          </div>
         </div>
-      </div>
-	  )}
+      )}
     </div>
   );
 };

@@ -10,7 +10,10 @@
   padding: 2rem;
   color: var(--white);
 }
-
+.footer .btn-footer {
+  width: 100%;
+  height: 100%;
+}
 .footer .searchUsers-container {
     width: 100%;
 }
