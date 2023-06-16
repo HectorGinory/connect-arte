@@ -123,3 +123,16 @@ export const AllQuestionsAnswer = (vacancie, answers) => {
   }
   return true;
 };
+
+export const AllVacancieInfoAdded = (vacancie) => {
+  if (
+    vacancie.created_by === "" ||
+    vacancie.charge_name === "" ||
+    vacancie.description === "" ||
+    vacancie.location === "" ||
+    vacancie.sector === "" ||
+    vacancie.last_day === ""
+  ) {
+    toast.error("Debes rellenar los campos con asterisco")
+  }
+};

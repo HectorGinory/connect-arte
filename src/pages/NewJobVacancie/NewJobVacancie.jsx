@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { InputText } from '../../common/InputText/InputText';
 import { createVacancie } from '../../services/apiCalls';
+import { AllVacancieInfoAdded } from '../../services/functions';
 import { userData } from '../userSlice';
 import './NewJobVacancie.css'
 
@@ -36,11 +37,13 @@ const NewJobVacancie = () => {
       ...prevState,
       created_by: userRdxData.user.id,
     }));
-    createVacancie(credentials, userRdxData.token).then((res) => {
-      navigate("/profile")
-    }).catch((e) => {
-      toast.error("Algo fue mal")
-    })
+    if(AllVacancieInfoAdded(credentials)) {
+      createVacancie(credentials, userRdxData.token).then((res) => {
+        navigate("/profile")
+      }).catch((e) => {
+        toast.error("Algo fue mal")
+      })
+    }
   };
   useEffect(() => {
     if (!userRdxData.user.name) {
@@ -56,7 +59,7 @@ const NewJobVacancie = () => {
       <h1>Crea una nueva oferta</h1>
       <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
-          <p>Nombre del cargo:</p>
+          <p>Nombre del cargo: *</p>
         </div>
         <InputText
           type={"text"}
@@ -70,7 +73,7 @@ const NewJobVacancie = () => {
       </label>
       <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
-          <p>Sector del proyecto:</p>
+          <p>Sector del proyecto: *</p>
         </div>
         <InputText
           type={"text"}
@@ -84,7 +87,7 @@ const NewJobVacancie = () => {
       </label>
       <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
-          <p>Ubicación:</p>
+          <p>Ubicación: *</p>
         </div>
         <InputText
           type={"text"}
@@ -98,7 +101,7 @@ const NewJobVacancie = () => {
       </label>
       <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
-          <p>Descripcion del puesto:</p>
+          <p>Descripcion del puesto: *</p>
         </div>
         <textarea
               type="text"
@@ -159,7 +162,7 @@ const NewJobVacancie = () => {
       <div className="flex align-c justify-c date-label-container">
       <label className="flex f-column align-c justify-c date-label purpleGradient-box">
         <div className="flex f-column align-c justify-c original-info">
-          <p>Fecha máxima para presentarse:</p>
+          <p>Fecha máxima para presentarse: *</p>
         </div>
         <input type="date" name="last_day" onChange={(e)=>credentialsHandler(e)} min={today}/>
       </label>
