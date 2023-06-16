@@ -24,8 +24,8 @@ export const convertToBackendFormat = (text) => {
   return finalText;
 };
 
-export function credentialsVerify(object) {
-  const { email, password, name, username } = object;
+export function credentialsVerify(newInfo) {
+  const { email, password, name, username } = newInfo;
   if (email === "" || password === "" || name === "" || username === "") {
     toast.error("Debes rellenar todos los campos");
     return false;
@@ -39,6 +39,12 @@ export function credentialsVerify(object) {
   if (!passwordRegex.test(password)) {
     toast.error(
       "La contraseña debe tener una mayúcula, 6 caracteres y un número"
+    );
+    return false;
+  }
+  if (username.split(" ").length > 1) {
+    toast.error(
+      "El nombre de usuario no puede contener espacios"
     );
     return false;
   }

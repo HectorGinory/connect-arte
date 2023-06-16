@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Register.css";
 import { InputText } from "../../common/InputText/InputText";
-// import { registerUsers } from '../../services/apiCalls'
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../userSlice";
 import { useNavigate } from "react-router";

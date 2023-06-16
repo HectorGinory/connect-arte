@@ -30,9 +30,7 @@ export const userSlice = createSlice({
         updateToken: (state,action) => {
             return {
                 ...state,
-            token: {
-             ...action.payload   
-            }
+             ...action.payload
             }
         }
     }
