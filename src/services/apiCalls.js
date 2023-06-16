@@ -4,6 +4,15 @@ import jwt_decode from 'jwt-decode';
 // const url = 'http://localhost:3000/'
 const url = 'https://backend-connect-arte.vercel.app/'
 
+const config = (token) => {
+    const config = {
+        headers: { 
+          "authorization": `Bearer ${token}`,  
+        }
+    };
+    return config
+}
+
 export const registerUsers = async (credentials) => {
     try {
         await axios.post(`${url}user`,credentials)
@@ -40,7 +49,7 @@ export const getUsersByRegExp = async (criteria) => {
     return res.data
 }
 export const editInfoByUserName = async (username, credentials) => {
-    const res = await axios.put(`${url}user/info/${username}`, credentials)
+    const res = await axios.put(`${url}user/info/${username}`, credentials, config)
     return res.data
 }
 export const editEducationByUserName = async (username, credentials) => {
