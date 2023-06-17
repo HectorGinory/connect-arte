@@ -56,7 +56,6 @@ const Home = () => {
                     <p>
                       {vacancie.charge_name} - {vacancie.location}
                     </p>
-                    
                   </div>
                   <div className="btn-container">
                     {!userRdxData.user.username ? (
