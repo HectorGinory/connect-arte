@@ -48,9 +48,9 @@ const EditProfileInfo = () => {
         await setUserRol(res.user.rol);
       })
       .catch((err) => {
-        toast.error("Cant get your user info, try again.");
+        toast.error(err.response.data.message);
         navigate("/");
-      });
+      })
   }, []);
 
   useEffect(()=> {
@@ -92,17 +92,18 @@ const EditProfileInfo = () => {
         dispatch(login(res))
         navigate("/profile");
       })
-      .catch(() => {
-        toast.error("Ups, something go wrong");
-      });
+      .catch((err) => {
+        toast.error(err.response.data.message);
+        navigate("/");
+      })
     }
   };
 
   const changerol = async () => {
     if (userRol === "user") {
-      await setUserRol("company");
+      setUserRol("company");
     } else {
-      await setUserRol("user");
+      setUserRol("user");
     }
   };
 

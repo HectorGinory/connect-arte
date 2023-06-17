@@ -7,6 +7,7 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { userData } from "../userSlice";
 import './VacancieDetail.css'
+import { toast } from "sonner";
 
 const VacancieDetail = () => {
   const vacancieId = useParams().id;
@@ -22,9 +23,10 @@ const VacancieDetail = () => {
       .then((res) => {
         setVacancie(res.data);
       })
-      .catch((e) => {
-        console.log(e);
-      });
+      .catch((err) => {
+        toast.error(err.response.data.message);
+        navigate("/");
+      })
   }, []);
 
   const removeVacancie = () => {
@@ -33,9 +35,10 @@ const VacancieDetail = () => {
       .then(() => {
         navigate("/profile");
       })
-      .catch((e) => {
-        console.log(e);
-      });
+      .catch((err) => {
+        toast.error(err.response.data.message);
+        navigate("/");
+      })
     }
   };
   return (

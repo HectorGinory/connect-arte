@@ -40,9 +40,10 @@ const Register = () => {
         toast.success("User created, were doing your login");
         navigate("/");
       })
-      .catch((e) => {
-        toast.error(e.message);
-      });
+      .catch((err) => {
+        toast.error(err.response.data.message);
+        navigate("/");
+      })
     }
   };
   return (

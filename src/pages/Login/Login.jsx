@@ -32,9 +32,10 @@ const Login = () => {
         navigate("/");
         toast.success(`Bienvenid@ de vuelta ${res.user.name}`);
       })
-      .catch((e) => {
-        console.log("ERROR:", e);
-      });
+      .catch((err) => {
+        toast.error(err.response.data.message);
+        navigate("/");
+      })
   };
 
   useEffect(() => {

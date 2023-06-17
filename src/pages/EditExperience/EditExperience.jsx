@@ -48,9 +48,10 @@ const EditEducation = () => {
           toast.error("Información añadida con éxito");
           navigate("/profile");
         })
-        .catch(() => {
-          toast.error("Ups, something go wrong");
-        });
+        .catch((err) => {
+          toast.error(err.response.data.message);
+          navigate("/");
+        })
     }
   };
 

@@ -41,7 +41,11 @@ const ApplyVacancie = () => {
     }
     getVacancieById(vacancieId, userRdxData.token).then((res) => {
       setVacancie(res.data);
-    });
+    })
+    .catch((err) => {
+      toast.error(err.response.data.message);
+      navigate("/");
+    })
   }, []);
 
   useEffect(() => {
@@ -58,9 +62,10 @@ const ApplyVacancie = () => {
         .then(() => {
           navigate("/profile");
         })
-        .catch((e) => {
-          toast.error("Algo fue mal");
-        });
+        .catch((err) => {
+          toast.error(err.response.data.message);
+          navigate("/");
+        })
     }
   };
   return (

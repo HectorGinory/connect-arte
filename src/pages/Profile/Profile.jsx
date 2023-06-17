@@ -32,7 +32,6 @@ const Profile = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState();
 
-
   useEffect(() => {
     if (!userRdxData.user.name) {
       navigate("/");
@@ -49,31 +48,44 @@ const Profile = () => {
       .then(async (res) => {
         await setUser(res.user);
         if (res.user.rol === "company") {
-          getJobVacanciesByUserId(res.user._id, userRdxData.token).then((res) => {
-            setJobVacancies(res.data);
-          });
+          getJobVacanciesByUserId(res.user._id, userRdxData.token)
+            .then((res) => {
+              setJobVacancies(res.data);
+            })
+            .catch((err) => {
+              toast.error(err.response.data.message);
+              navigate("/");
+            });
         }
       })
       .catch((err) => {
-        toast.error("No ha sido posible acceder");
+        toast.error(err.response.data.message);
         navigate("/");
       });
   }, [params]);
 
   const removeEducation = (education) => {
-    removeEducationByUserName(userRdxData.user.username, education, userRdxData.token).then(
-      (res) => {
-        setUser(res.user);
-      }
-    );
+    removeEducationByUserName(
+      userRdxData.user.username,
+      education,
+      userRdxData.token
+    ).then((res) => {
+      setUser(res.user);
+    })
+    .catch((err) => {
+      toast.error(err.response.data.message);
+      navigate("/");
+    })
   };
 
   const removeExperience = (experience) => {
-    removeExperienceByUserName(userRdxData.user.username, experience, userRdxData.token).then(
-      (res) => {
-        setUser(res.user);
-      }
-    );
+    removeExperienceByUserName(
+      userRdxData.user.username,
+      experience,
+      userRdxData.token
+    ).then((res) => {
+      setUser(res.user);
+    });
   };
 
   return (
@@ -163,9 +175,11 @@ const Profile = () => {
                               <p>{education.description}</p>
                             </div>
                             {ownerProfile && (
-                              <ButtonIcon ReactIcon={RiDeleteBin6Fill}
-                              text="Eliminar"
-                              onClick={() => removeEducation(education)}/>
+                              <ButtonIcon
+                                ReactIcon={RiDeleteBin6Fill}
+                                text="Eliminar"
+                                onClick={() => removeEducation(education)}
+                              />
                             )}
                           </div>
                         );
@@ -209,9 +223,11 @@ const Profile = () => {
                               <p>{experience.description}</p>
                             </div>
                             {ownerProfile && (
-                              <ButtonIcon ReactIcon={RiDeleteBin6Fill}
-                              text="Eliminar"
-                              onClick={() => removeExperience(experience)}/>
+                              <ButtonIcon
+                                ReactIcon={RiDeleteBin6Fill}
+                                text="Eliminar"
+                                onClick={() => removeExperience(experience)}
+                              />
                             )}
                           </div>
                         );
@@ -242,7 +258,9 @@ const Profile = () => {
                             }
                             className="data"
                           >
-                            <p className="name-data">{vacancie.charge_name} - {vacancie.location}</p>
+                            <p className="name-data">
+                              {vacancie.charge_name} - {vacancie.location}
+                            </p>
                             <p className="extra-data">
                               {vacancie.user_postulated.length} usuarios
                               presentados
