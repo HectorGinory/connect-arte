@@ -13,11 +13,11 @@ const Home = () => {
   const [vacancies, setVacancies] = useState([]);
 
   useEffect(() => {
+    console.log(userRdxData)
     if (userRdxData.user.interests) {
       getVacancies(1, 10, userRdxData.user.interests.join("|"))
         .then((res) => {
           setVacancies(res.data.data);
-          console.log(res.data.data);
         })
         .catch((err) => {
           toast.error(err.response.data.message);
