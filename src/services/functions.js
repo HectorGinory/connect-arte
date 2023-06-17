@@ -134,5 +134,7 @@ export const AllVacancieInfoAdded = (vacancie) => {
     vacancie.last_day === ""
   ) {
     toast.error("Debes rellenar los campos con asterisco")
+    return false
   }
+  return true
 };

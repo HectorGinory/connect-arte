@@ -70,7 +70,7 @@ const VacancieDetail = () => {
           <p className="question">{vacancie.question_three}</p>
           }
           </div>
-          {userRdxData.user.id === vacancie.created_by ? (
+          {userRdxData.user.id === vacancie.created_by._id ? (
             <div className="postulated-container">
               {vacancie.user_postulated.map((response) => {
                 return (

@@ -37,6 +37,7 @@ const NewJobVacancie = () => {
       ...prevState,
       created_by: userRdxData.user.id,
     }));
+    console.log(credentials)
     if (AllVacancieInfoAdded(credentials)) {
       createVacancie(credentials, userRdxData.token)
         .then((res) => {
