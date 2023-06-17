@@ -88,7 +88,8 @@ const Footer = () => {
           <div className="usersFiltered">
             {usersRecommended.length !== 0 &&
               usersRecommended.map((user, index) => {
-                return (
+                if(user.username !== userRdxData.user.username) {
+                  return (
                   <div
                     className="flex align-c f-column user-container"
                     key={index}
@@ -98,6 +99,7 @@ const Footer = () => {
                     <p>{user.username}</p>
                   </div>
                 );
+                }
               })}
           </div>
         </div>
