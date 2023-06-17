@@ -1,8 +1,8 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-const url = "http://localhost:3000/";
-// const url = 'https://backend-connect-arte.vercel.app/'
+// const url = "http://localhost:3000/";
+const url = 'https://backend-connect-arte.vercel.app/'
 
 const config = (token) => {
   const config = {
