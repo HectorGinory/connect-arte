@@ -19,13 +19,14 @@ const Footer = () => {
 
   useEffect(() => {
     let criteria;
-    if (userRdxData.user.interests) {
+    if (userRdxData.user.interests.length > 0) {
       criteria = userRdxData.user.interests.join("|");
     } else {
       criteria = "";
     }
     getUsersByInterests(criteria, userRdxData.token)
       .then((res) => {
+        console.log(res.users)
         setUsersRecommended(res.users);
       })
       .catch((e) => {

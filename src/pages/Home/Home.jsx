@@ -17,6 +17,7 @@ const Home = () => {
       getVacancies(1, 10, userRdxData.user.interests.join("|"))
         .then((res) => {
           setVacancies(res.data.data);
+          console.log(res.data.data);
         })
         .catch((err) => {
           toast.error(err.response.data.message);
@@ -55,13 +56,7 @@ const Home = () => {
                     <p>
                       {vacancie.charge_name} - {vacancie.location}
                     </p>
-                    {!userRdxData.user.username ? (
-                      <p> {vacancie.created_by.username}</p>
-                    ) : (
-                      <a href={`user/${vacancie.created_by.username}`}>
-                        <p> {vacancie.created_by.username}</p>
-                      </a>
-                    )}
+                    
                   </div>
                   <div className="btn-container">
                     {!userRdxData.user.username ? (
