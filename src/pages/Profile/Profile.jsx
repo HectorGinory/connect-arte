@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import profilePicture from "../../assets/profile-picture.png";
-import profileBanner from "../../assets/banner-profile.png";
-import { userData } from "../userSlice";
-import { useSelector } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { login, updateUserRdx, userData } from "../userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {  useNavigate, useParams } from "react-router-dom";
 import {
   firstToUpperCase,
   formatedDate,
@@ -12,10 +11,12 @@ import {
 import "./Profile.css";
 import {
   editEducationByUserName,
+  followUser,
   getJobVacanciesByUserId,
   getUserByUserName,
   removeEducationByUserName,
   removeExperienceByUserName,
+  unfollowUser,
 } from "../../services/apiCalls";
 import { toast } from "sonner";
 RiDeleteBin6Fill;
@@ -23,6 +24,7 @@ import { RiDeleteBin6Fill } from "react-icons/ri";
 import { FaPencilAlt, FaUserPlus } from "react-icons/fa";
 import ButtonIcon from "../../common/ButtonIcon/ButtonIcon";
 import Spinner from "../../common/Spinner/Spinner";
+import jwt_decode from 'jwt-decode';
 
 const Profile = () => {
   const params = useParams();
@@ -31,8 +33,10 @@ const Profile = () => {
   const userRdxData = useSelector(userData);
   const navigate = useNavigate();
   const [user, setUser] = useState();
+  const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log(userRdxData.user)
     if (!userRdxData.user.name) {
       navigate("/");
     }
@@ -47,6 +51,7 @@ const Profile = () => {
     getUserByUserName(username, userRdxData.token)
       .then(async (res) => {
         await setUser(res.user);
+        console.log(res.user)
         if (res.user.rol === "company") {
           getJobVacanciesByUserId(res.user._id, userRdxData.token)
             .then((res) => {
@@ -62,7 +67,7 @@ const Profile = () => {
         toast.error(err.response.data.message);
         navigate("/");
       });
-  }, [params]);
+  }, [params, userRdxData]);
 
   const removeEducation = (education) => {
     removeEducationByUserName(
@@ -87,6 +92,28 @@ const Profile = () => {
       setUser(res.user);
     });
   };
+
+  const followUserBtn = () => {
+    followUser(userRdxData.token, params.id).then((res)=>{
+      const user = jwt_decode(res.token)
+      dispatch(updateUserRdx(user))
+      dispatch(login(res))
+    }).catch((e)=>{
+      console.log(e)
+      toast.error("No ha sido posible seguir a este usuario")
+    })
+  }
+
+  const unfollowUserBtn = () => {
+    unfollowUser(userRdxData.token, params.id).then((res)=>{
+      const user = jwt_decode(res.token)
+      console.log(user)
+      dispatch(updateUserRdx(user))
+      dispatch(login(res))
+    }).catch(()=>{
+      toast.error("No ha sido posible seguir a este usuario")
+    })
+  }
 
   return (
     <div className="flex justify-c profile-container">
@@ -116,16 +143,26 @@ const Profile = () => {
                 <h2>@{firstToUpperCase(user.username)}</h2>
                 <p>{firstToUpperCase(user.location)}</p>
                 <p>{printDateProfile(user.dateOfCreation)}</p>
-                <p>{"Tiene " + user.contacts.length + " seguidores"}</p>
+                <p>{user.followers.length === 1 ? "Tiene " + user.followers.length + " seguidor" : "Tiene " + user.followers.length + " seguidores"}</p>
                 <div className="common-contacts"></div>
                 <div className="contact-section">
-                  {!ownerProfile && (
-                    <ButtonIcon
+                  {!ownerProfile && 
+                  <>
+                  {!userRdxData.user.following.includes(user._id) ?
+                      <ButtonIcon
                       ReactIcon={FaUserPlus}
-                      onClick={() => console.log()}
-                      text={"Contactar"}
+                      onClick={() =>followUserBtn()}
+                      text={"Seguir"}
+                    ></ButtonIcon>:
+                                        <ButtonIcon
+                      ReactIcon={FaUserPlus}
+                      onClick={() =>unfollowUserBtn()}
+                      text={"Dejar de seguir"}
                     ></ButtonIcon>
-                  )}
+                    }
+                  </>
+
+                  }
                 </div>
               </div>
               {user.description !== "" && (

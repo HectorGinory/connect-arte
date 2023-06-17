@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./Footer.css";
-import { userList } from "../../services/provisionalStuff";
-import { firstToUpperCase } from "../../services/functions";
-import profilePicture from "../../assets/profile-picture.png";
 import { useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
 import BtnNavbar from "../ButtonIcon/ButtonIcon";

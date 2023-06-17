@@ -80,6 +80,16 @@ export const removeExperienceByUserName = async (username, credentials, token) =
   return res.data;
 };
 
+export const followUser = async(token, username) => {
+  const res = await axios.post(`${url}user/follow/${username}`, {} ,config(token))
+  return res.data
+}
+
+export const unfollowUser = async(token, username) => {
+  const res = await axios.post(`${url}user/unfollow/${username}`, {} ,config(token))
+  return res.data
+}
+
 export const createVacancie = async (credentials, token) => {
   const res = await axios.post(`${url}vacancies`, credentials, config(token));
   return res;
