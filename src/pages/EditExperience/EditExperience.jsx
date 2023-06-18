@@ -45,7 +45,7 @@ const EditEducation = () => {
         userRdxData.token
       )
         .then((res) => {
-          toast.error("Información añadida con éxito");
+          toast.success("Información añadida con éxito");
           navigate("/profile");
         })
         .catch((err) => {

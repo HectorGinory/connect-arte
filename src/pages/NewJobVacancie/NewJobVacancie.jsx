@@ -41,6 +41,7 @@ const NewJobVacancie = () => {
     if (AllVacancieInfoAdded(credentials)) {
       createVacancie(credentials, userRdxData.token)
         .then((res) => {
+          toast.success("Oferta creada con éxito");
           navigate("/profile");
         })
         .catch((err) => {

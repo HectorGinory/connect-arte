@@ -21,6 +21,7 @@ const VacancieDetail = () => {
     }
     getVacancieById(vacancieId, userRdxData.token)
       .then((res) => {
+         console.log(res.data)
         setVacancie(res.data);
       })
       .catch((err) => {

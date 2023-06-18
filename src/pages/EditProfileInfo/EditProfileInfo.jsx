@@ -87,7 +87,8 @@ const EditProfileInfo = () => {
     if(checkEditInfo(credentials)) {
       editInfoByUserName(userRdxData.user.username, credentials, userRdxData.token)
       .then((res) => {
-        const user = jwt_decode(res.token)
+          toast.error("Información modificada con éxito");
+          const user = jwt_decode(res.token)
         dispatch(updateUserRdx(user))
         dispatch(login(res))
         navigate("/profile");
