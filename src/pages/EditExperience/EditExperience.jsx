@@ -13,8 +13,6 @@ import {
 
 import { InputText } from "../../common/InputText/InputText";
 
-import ReactCrop from "react-image-crop";
-import "react-image-crop/dist/ReactCrop.css";
 import { toast } from "sonner";
 import { checkNoInfoEmpty, firstToUpperCase } from "../../services/functions";
 
