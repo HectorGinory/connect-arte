@@ -5,6 +5,7 @@
 **Tecnologías:** ReactJS, HTML, CSS3, JavaScript - ES6, Git
 
 <a href="https://connect-arte.vercel.app/">Haz click aquí para ver el deploy</a>
+<br/>
 <a href="https://github.com/HectorGinory/Backend_Connect-Arte">Haz click aquí para ver el repositorio del backend</a>
 
 ## ¿Qué es Connect-arte? ##
