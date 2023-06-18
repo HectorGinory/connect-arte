@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { getVacancies } from "../../services/apiCalls";
 import "./JobSearch.css";
 import { firstToUpperCase, formatedDate } from "../../services/functions";
+import { toast } from "sonner";
 
 const JobSearch = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const JobSearch = () => {
     if (!userRdxData.user.name) {
       navigate("/");
     }
+    setDetailVacancieIndex(NaN)
     getVacancies(actualPage, 10, criteria)
       .then((res) => {
         setVacancies(res.data.data);
@@ -98,7 +100,7 @@ const JobSearch = () => {
                     {actualPage - 1}
                   </button>
                 )}
-                <button className="page-btn">{actualPage}</button>
+                <button className="page-btn actual-page">{actualPage}</button>
                 {actualPage !== totalPage && (
                   <button
                     className="page-btn"

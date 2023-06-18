@@ -17,6 +17,14 @@
     background: var(--white);
     border: var(--darkfirst);
 }
+
+.jobvacancies-container .actual-page {
+    padding: .4rem;
+    margin: 0 .3rem;
+    background: var(--first);
+    border: 1px solid var(--white);
+    color: var(--white);
+}
 .title-container .btn-navigation {
     border: 1px solid var(--first);
     color: var(--white);
@@ -33,7 +41,7 @@
 
 .jobvacancies-container .vacancies-container .filter-vacancies {
     width: 100%;
-    height: 10rem;
+    height: 12rem;
     box-sizing: border-box;
     padding: 1rem;
     gap: .5rem;
@@ -70,7 +78,8 @@
 }
 .jobvacancies-container .vacancies-container .vacancie-detail {
     width: 100%;
-    height: 30rem;
+    min-height: 26rem;
+    height: auto;
 }
 
 .jobvacancies-container .vacancies-container .vacancie-detail .vacancie-container {
