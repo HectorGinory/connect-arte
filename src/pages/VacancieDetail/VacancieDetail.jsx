@@ -16,12 +16,12 @@ const VacancieDetail = () => {
   const [vacancie, setVacancie] = useState({});
 
   useState(() => {
+    console.log(userRdxData)
     if (!userRdxData.user.name) {
       navigate("/");
     }
     getVacancieById(vacancieId, userRdxData.token)
       .then((res) => {
-         console.log(res.data)
         setVacancie(res.data);
       })
       .catch((err) => {
@@ -46,7 +46,7 @@ const VacancieDetail = () => {
     <>
       {vacancie.charge_name ? (
         <div className="flex f-column align-c vacanciedetail-container">
-          {userRdxData.user.id === vacancie.created_by && (
+          {userRdxData.user.id === vacancie.created_by._id && (
             <button onClick={() => removeVacancie()} className="flex align-c justify-c remove-btn">
               <RiDeleteBin6Fill />
             </button>

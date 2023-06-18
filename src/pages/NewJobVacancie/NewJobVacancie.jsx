@@ -33,11 +33,6 @@ const NewJobVacancie = () => {
   const today = new Date().toISOString().split("T")[0];
 
   const submitInfo = async () => {
-    setCredentials((prevState) => ({
-      ...prevState,
-      created_by: userRdxData.user.id,
-    }));
-    console.log(credentials)
     if (AllVacancieInfoAdded(credentials)) {
       createVacancie(credentials, userRdxData.token)
         .then((res) => {
@@ -50,6 +45,7 @@ const NewJobVacancie = () => {
         });
     }
   };
+  
   useEffect(() => {
     if (!userRdxData.user.name) {
       navigate("/");
@@ -57,6 +53,11 @@ const NewJobVacancie = () => {
       toast.error("Tu rol debe ser empresa para crear un empleo");
       navigate("/");
     }
+
+    setCredentials((prevState) => ({
+      ...prevState,
+      created_by: userRdxData.user.id,
+    }));
   }, []);
 
   return (

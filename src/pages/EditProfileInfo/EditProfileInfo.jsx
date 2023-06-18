@@ -9,11 +9,11 @@ import {
   getContriesList,
   getUserByUserName,
 } from "../../services/apiCalls";
-import jwt_decode from 'jwt-decode';
+import jwt_decode from "jwt-decode";
 
 import "./EditProfileInfo.css";
 import { InputText } from "../../common/InputText/InputText";
-import { FaUsers, FaUser} from 'react-icons/fa'
+import { FaUsers, FaUser } from "react-icons/fa";
 import { toast } from "sonner";
 import { checkEditInfo, firstToUpperCase } from "../../services/functions";
 
@@ -34,7 +34,7 @@ const EditProfileInfo = () => {
     location: "",
     rol: "",
     interests: "",
-    keyWords: ""
+    keyWords: "",
   });
 
   useEffect(() => {
@@ -50,22 +50,22 @@ const EditProfileInfo = () => {
       .catch((err) => {
         toast.error(err.response.data.message);
         navigate("/");
-      })
+      });
   }, []);
 
-  useEffect(()=> {
+  useEffect(() => {
     setCredentials((prev) => ({
       ...prev,
       rol: userRol,
     }));
-  }, [userRol])
+  }, [userRol]);
 
   const credentialsHandler = async (e) => {
-    if(e.target.name === "description" && e.target.value.length > 150) {
-      return false
+    if (e.target.name === "description" && e.target.value.length > 150) {
+      return false;
     }
-    if(e.target.name === "name" && e.target.value.length > 20) {
-      return false
+    if (e.target.name === "name" && e.target.value.length > 20) {
+      return false;
     }
     await setCredentials((prevState) => ({
       ...prevState,
@@ -84,19 +84,23 @@ const EditProfileInfo = () => {
   };
 
   const submitInfo = async () => {
-    if(checkEditInfo(credentials)) {
-      editInfoByUserName(userRdxData.user.username, credentials, userRdxData.token)
-      .then((res) => {
+    if (checkEditInfo(credentials)) {
+      editInfoByUserName(
+        userRdxData.user.username,
+        credentials,
+        userRdxData.token
+      )
+        .then((res) => {
           toast.success("Información modificada con éxito");
-          const user = jwt_decode(res.token)
-        dispatch(updateUserRdx(user))
-        dispatch(login(res))
-        navigate("/profile");
-      })
-      .catch((err) => {
-        toast.error(err.response.data.message);
-        navigate("/");
-      })
+          const user = jwt_decode(res.token);
+          dispatch(updateUserRdx(user));
+          dispatch(login(res));
+          navigate("/profile");
+        })
+        .catch((err) => {
+          toast.error(err.response.data.message);
+          navigate("/");
+        });
     }
   };
 
@@ -145,9 +149,7 @@ const EditProfileInfo = () => {
       <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Coloca una lista de tus interes:</p>
-          {!!user.interests > 0 &&
-            <p>{user.interests.join(", ")}</p>
-          }
+          {!!user.interests > 0 && <p>{user.interests.join(", ")}</p>}
         </div>
         <InputText
           type={"text"}
@@ -162,9 +164,7 @@ const EditProfileInfo = () => {
       <label className="flex align-c f-column justify-c justify-sb purpleGradient-box">
         <div className="flex f-column justify-c original-info">
           <p>Lista de palabras clave para encontrarte:</p>
-          {!!user.keyWords &&
-            <p>{user.keyWords.join(", ")}</p>
-          }
+          {!!user.keyWords && <p>{user.keyWords.join(", ")}</p>}
         </div>
         <InputText
           type={"text"}
@@ -255,24 +255,25 @@ const EditProfileInfo = () => {
         </div>
       </label>
       <div className="flex align-c justify-c change-rol-container">
-        <button onClick={() => changerol()} className="flex align-c justify-c changerol-button">
-        {userRol === "user"? 
-        <>
-        <div className="flex align-c justify-c icon-btn">
-          <FaUser/>
-          </div>
-          <p>Tu rol actual es usuario
-            
-          </p>
-        </>: 
-        <>
-        <div className="flex align-c justify-c icon-btn">
-          <FaUsers/>
-          </div>
-          <p>Tu rol actual es empresa
-            
-          </p>
-        </>}
+        <button
+          onClick={() => changerol()}
+          className="flex align-c justify-c changerol-button"
+        >
+          {userRol === "user" ? (
+            <>
+              <div className="flex align-c justify-c icon-btn">
+                <FaUser />
+              </div>
+              <p>Tu rol actual es usuario</p>
+            </>
+          ) : (
+            <>
+              <div className="flex align-c justify-c icon-btn">
+                <FaUsers />
+              </div>
+              <p>Tu rol actual es empresa</p>
+            </>
+          )}
         </button>
       </div>
       <div className="btn-container">
