@@ -49,7 +49,6 @@ const EditEducation = () => {
         })
         .catch((err) => {
           toast.error(err.response.data.message);
-          navigate("/");
         })
     }
   };
