@@ -31,7 +31,7 @@ const VacancieDetail = () => {
   }, []);
 
   const removeVacancie = () => {
-    if(userRdxData.user.id === vacancie.created_by){
+    if(userRdxData.user.id === vacancie.created_by._id){
       removeVacancieById(vacancieId, userRdxData.token)
       .then(() => {
         navigate("/profile");

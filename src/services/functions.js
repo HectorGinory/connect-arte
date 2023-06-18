@@ -103,14 +103,14 @@ export const checkEditInfo = (editInfo) => {
 
 export const checkNoInfoEmpty = (obj) => {
   const keys = Object.keys(obj);
-  keys.forEach((key) => {
-    if (obj[key] === "") {
-      toast.error("Debes rellenar todos los campos");
-      return false;
-    }
-  });
-  return true;
-};
+  let allInfoChecked = keys.filter((key) => obj[key] === "")
+  if(allInfoChecked.length > 0) {
+    toast.error("Debes rellenar todos los campos")
+    return false
+  } else {
+    return true
+  }
+  }
 
 export const AllQuestionsAnswer = (vacancie, answers) => {
   if (
